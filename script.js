@@ -400,3 +400,43 @@ console.log(
   '%cWebsite by Skylink Cyber · Print. Design. Create.',
   'font-size:12px; color:#64748b;'
 );
+/* ============ NEW: FAQ ACCORDION ============ */
+document.querySelectorAll('.faq-item').forEach((item) => {
+  const question = item.querySelector('.faq-question');
+  if (!question) return;
+  question.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ============ NEW: NEWSLETTER FORM ============ */
+const newsletterForm = document.getElementById('newsletterForm');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = newsletterForm.querySelector('input')?.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Please enter a valid email.', 'error');
+      return;
+    }
+    showToast('Subscribed! Welcome to Skylink Cyber. 🎉', 'success');
+    newsletterForm.reset();
+    // TODO: POST email to backend
+  });
+}
+
+/* ============ NEW: MOBILE MEGA MENU (tap to expand) ============ */
+// On mobile, tap "Services" to expand mega menu (instead of navigating)
+const megaLink = document.querySelector('.has-mega > a');
+const megaParent = document.querySelector('.has-mega');
+if (megaLink && megaParent) {
+  megaLink.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024) {
+      e.preventDefault();
+      megaParent.classList.toggle('open');
+    }
+  });
+}
