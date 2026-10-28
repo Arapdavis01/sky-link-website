@@ -3,29 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Skylink Cyber — Your one-stop shop for Photoshop editing, 3D T-shirt printing, graphic design, printing, scanning & all cyber services." />
-  <meta name="keywords" content="Skylink Cyber, cyber cafe, photoshop, 3D t-shirt printing, graphic design, printing, photocopy, Kenya" />
+  <meta name="description" content="Skylink Cyber — Photoshop, 3D T-shirt printing, eulogies, harambee cards, wedding cards, business cards, banners & all cyber services in one modern shop." />
+  <meta name="keywords" content="Skylink Cyber, cyber cafe, photoshop, 3D t-shirt printing, eulogy printing, harambee cards, wedding cards, business cards, printing Kenya" />
   <meta name="author" content="Skylink Cyber" />
 
-  <!-- Open Graph (for social sharing) -->
   <meta property="og:title" content="Skylink Cyber | Print. Design. Create." />
-  <meta property="og:description" content="Photoshop, 3D T-shirt printing & all cyber services under one roof." />
+  <meta property="og:description" content="Eulogies, harambee cards, wedding cards, 3D t-shirt printing & all cyber services under one roof." />
   <meta property="og:type" content="website" />
 
   <title>Skylink Cyber | Print. Design. Create.</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-
-  <!-- Icons (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -36,8 +28,21 @@
     <div class="loader-bar"><span></span></div>
   </div>
 
-  <!-- ============ SCROLL PROGRESS BAR ============ -->
   <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ============ TOP INFO BAR ============ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span><i class="fa-solid fa-clock"></i> Mon–Sun · 8am–8pm</span>
+      <span><i class="fa-solid fa-phone"></i> +254 XXX XXX XXX</span>
+      <span><i class="fa-solid fa-location-dot"></i> Your Location, Town</span>
+      <span class="topbar-social">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </span>
+    </div>
+  </div>
 
   <!-- ============ NAVBAR ============ -->
   <header class="navbar" id="navbar">
@@ -50,16 +55,69 @@
       <nav class="nav-menu" id="navMenu">
         <ul>
           <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#t-shirts" class="nav-link">T-Shirts</a></li>
+
+          <!-- MEGA MENU -->
+          <li class="has-mega">
+            <a href="#services" class="nav-link">
+              Services <i class="fa-solid fa-chevron-down" style="font-size:.7rem;margin-left:4px;"></i>
+            </a>
+            <div class="mega-menu">
+              <div class="mega-col">
+                <h4><i class="fa-solid fa-pen-nib"></i> Print & Design</h4>
+                <ul>
+                  <li><a href="#print-design">Eulogy / Memorial Programs</a></li>
+                  <li><a href="#print-design">Harambee Cards</a></li>
+                  <li><a href="#print-design">Wedding Cards & Invitations</a></li>
+                  <li><a href="#print-design">Birthday & Baby Shower Cards</a></li>
+                  <li><a href="#print-design">Graduation Programs</a></li>
+                  <li><a href="#print-design">Business Cards</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4><i class="fa-solid fa-shirt"></i> Custom Print</h4>
+                <ul>
+                  <li><a href="#t-shirts">3D T-Shirt Printing</a></li>
+                  <li><a href="#t-shirts">Hoodies & Caps</a></li>
+                  <li><a href="#t-shirts">Mugs & Bottles</a></li>
+                  <li><a href="#t-shirts">Phone Cases</a></li>
+                  <li><a href="#t-shirts">Corporate Uniforms</a></li>
+                  <li><a href="#t-shirts">Face Masks & Aprons</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Design</h4>
+                <ul>
+                  <li><a href="#services">Photoshop Editing</a></li>
+                  <li><a href="#services">Logo Design & Branding</a></li>
+                  <li><a href="#services">Poster & Flyer Design</a></li>
+                  <li><a href="#services">Photo Restoration</a></li>
+                  <li><a href="#services">Passport Photos</a></li>
+                  <li><a href="#services">Social Media Graphics</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4><i class="fa-solid fa-globe"></i> Digital / Cyber</h4>
+                <ul>
+                  <li><a href="#services">Printing & Photocopy</a></li>
+                  <li><a href="#services">CV & Document Typing</a></li>
+                  <li><a href="#services">Scanning & Lamination</a></li>
+                  <li><a href="#services">KRA / NTSA / NHIF</a></li>
+                  <li><a href="#services">Job Applications</a></li>
+                  <li><a href="#services">Video Editing</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li><a href="#sample-designs" class="nav-link">Designs</a></li>
           <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="#contact" class="nav-cta">Book Now</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -78,15 +136,15 @@
     <div class="hero-container">
       <div class="hero-content">
         <span class="hero-badge">
-          <i class="fa-solid fa-star"></i> Trusted Cyber Café & Print Shop
+          <i class="fa-solid fa-star"></i> Trusted Cyber Café · Design & Print Shop
         </span>
         <h1 class="hero-title">
           Print. Design.<br />
           <span class="gradient-text">Create.</span>
         </h1>
         <p class="hero-subtitle">
-          Photoshop editing, custom 3D T-shirt printing, graphic design and every
-          cyber service you need — all under one roof at <strong>Skylink Cyber</strong>.
+          Eulogies, harambee cards, wedding invitations, 3D T-shirts, logos, Photoshop
+          & every cyber service you need — all under one roof at <strong>Skylink Cyber</strong>.
         </p>
         <div class="hero-buttons">
           <a href="#services" class="btn btn-primary">
@@ -114,47 +172,52 @@
       </div>
 
       <div class="hero-visual">
-        <div class="float-card card-1">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <span>Photoshop</span>
-        </div>
-        <div class="float-card card-2">
-          <i class="fa-solid fa-shirt"></i>
-          <span>3D Printing</span>
-        </div>
-        <div class="float-card card-3">
-          <i class="fa-solid fa-print"></i>
-          <span>Printing</span>
-        </div>
+        <div class="float-card card-1"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Photoshop</span></div>
+        <div class="float-card card-2"><i class="fa-solid fa-shirt"></i><span>3D Printing</span></div>
+        <div class="float-card card-3"><i class="fa-solid fa-envelope-open-text"></i><span>Cards</span></div>
         <div class="hero-img-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-            alt="Skylink Cyber workspace"
-          />
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Skylink Cyber workspace" />
         </div>
       </div>
     </div>
 
-    <a href="#services" class="scroll-down" aria-label="Scroll down">
+    <a href="#trust-strip" class="scroll-down" aria-label="Scroll down">
       <i class="fa-solid fa-chevron-down"></i>
     </a>
   </section>
 
-  <!-- ============ MARQUEE / TRUST STRIP ============ -->
+  <!-- ============ TRUST STRIP (NEW) ============ -->
+  <div class="trust-strip" id="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span>100% Quality Guarantee</span></div>
+      <div class="trust-item"><i class="fa-solid fa-bolt"></i><span>Same-Day Delivery</span></div>
+      <div class="trust-item"><i class="fa-solid fa-mobile-screen-button"></i><span>M-Pesa Accepted</span></div>
+      <div class="trust-item"><i class="fa-solid fa-truck-fast"></i><span>Bulk Orders Welcome</span></div>
+      <div class="trust-item"><i class="fa-solid fa-star"></i><span>Trusted by 2,500+ Clients</span></div>
+    </div>
+  </div>
+
+  <!-- ============ MARQUEE ============ -->
   <div class="marquee">
     <div class="marquee-track">
-      <span><i class="fa-solid fa-check"></i> Photoshop Editing</span>
+      <span><i class="fa-solid fa-check"></i> Eulogy Programs</span>
+      <span><i class="fa-solid fa-check"></i> Harambee Cards</span>
+      <span><i class="fa-solid fa-check"></i> Wedding Invitations</span>
       <span><i class="fa-solid fa-check"></i> 3D T-Shirt Printing</span>
-      <span><i class="fa-solid fa-check"></i> Graphic Design</span>
-      <span><i class="fa-solid fa-check"></i> Printing & Scanning</span>
+      <span><i class="fa-solid fa-check"></i> Photoshop Editing</span>
+      <span><i class="fa-solid fa-check"></i> Business Cards</span>
+      <span><i class="fa-solid fa-check"></i> Banners & Posters</span>
       <span><i class="fa-solid fa-check"></i> Lamination</span>
       <span><i class="fa-solid fa-check"></i> CV Writing</span>
       <span><i class="fa-solid fa-check"></i> Online Applications</span>
-      <!-- repeat for seamless loop -->
-      <span><i class="fa-solid fa-check"></i> Photoshop Editing</span>
+      <!-- repeat -->
+      <span><i class="fa-solid fa-check"></i> Eulogy Programs</span>
+      <span><i class="fa-solid fa-check"></i> Harambee Cards</span>
+      <span><i class="fa-solid fa-check"></i> Wedding Invitations</span>
       <span><i class="fa-solid fa-check"></i> 3D T-Shirt Printing</span>
-      <span><i class="fa-solid fa-check"></i> Graphic Design</span>
-      <span><i class="fa-solid fa-check"></i> Printing & Scanning</span>
+      <span><i class="fa-solid fa-check"></i> Photoshop Editing</span>
+      <span><i class="fa-solid fa-check"></i> Business Cards</span>
+      <span><i class="fa-solid fa-check"></i> Banners & Posters</span>
       <span><i class="fa-solid fa-check"></i> Lamination</span>
       <span><i class="fa-solid fa-check"></i> CV Writing</span>
       <span><i class="fa-solid fa-check"></i> Online Applications</span>
@@ -167,7 +230,7 @@
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
       <p class="section-subtitle">
-        From creative design to everyday printing — everything you need in one modern cyber café.
+        From deeply meaningful cards to everyday printing — we've got every job covered.
       </p>
     </div>
 
@@ -217,6 +280,133 @@
     </div>
   </section>
 
+  <!-- ============ PRINT & DESIGN PRODUCTS (NEW) ============ -->
+  <section id="print-design" class="section print-design">
+    <div class="section-head">
+      <span class="section-tag">Specialty Printing</span>
+      <h2 class="section-title">Eulogies, Harambee & <span class="gradient-text">Event Cards</span></h2>
+      <p class="section-subtitle">
+        Thoughtfully designed, professionally printed cards for life's most important moments.
+      </p>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-dove"></i></div>
+        <h3>Eulogy Programs</h3>
+        <p>Dignified memorial booklets with photos, tribute text, order of service & more.</p>
+        <span class="product-meta">From KSh 60 / card</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>Harambee Cards</h3>
+        <p>Fundraising contribution cards with elegant designs & personalisation.</p>
+        <span class="product-meta">From KSh 25 / card</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-ring"></i></div>
+        <h3>Wedding Cards & Invites</h3>
+        <p>Elegant invitations, RSVPs & order-of-service booklets in premium finishes.</p>
+        <span class="product-meta">From KSh 50 / card</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-cake-candles"></i></div>
+        <h3>Birthday & Baby Shower</h3>
+        <p>Fun, colourful invitations & thank-you cards tailored to your theme.</p>
+        <span class="product-meta">From KSh 40 / card</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Graduation Programs</h3>
+        <p>Graduation booklets, invitations & certificates for schools & families.</p>
+        <span class="product-meta">From KSh 50 / card</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Business Cards</h3>
+        <p>Premium matte, gloss or textured business cards — with fast turnaround.</p>
+        <span class="product-meta">From KSh 1,000 / 100 pcs</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-newspaper"></i></div>
+        <h3>Flyers & Posters</h3>
+        <p>Eye-catching flyers, posters & banners for events, promos & church programs.</p>
+        <span class="product-meta">From KSh 30 / flyer</span>
+      </article>
+
+      <article class="product-card">
+        <div class="product-icon"><i class="fa-solid fa-receipt"></i></div>
+        <h3>Receipt & Invoice Books</h3>
+        <p>Custom business receipt books, invoice books & letterheads.</p>
+        <span class="product-meta">From KSh 500 / book</span>
+      </article>
+    </div>
+
+    <div class="product-cta">
+      <a href="#contact" class="btn btn-primary">
+        <i class="fa-solid fa-paper-plane"></i> Request a Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SAMPLE DESIGNS GALLERY (NEW) ============ -->
+  <section id="sample-designs" class="section sample-designs">
+    <div class="section-head">
+      <span class="section-tag">Design Samples</span>
+      <h2 class="section-title">See Our <span class="gradient-text">Card Designs</span></h2>
+      <p class="section-subtitle">A selection of our eulogy, harambee, wedding & event card designs.</p>
+    </div>
+
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="eulogy">Eulogies</button>
+      <button class="filter-btn" data-filter="harambee">Harambee</button>
+      <button class="filter-btn" data-filter="wedding">Weddings</button>
+      <button class="filter-btn" data-filter="event">Events</button>
+    </div>
+
+    <div class="gallery-grid" id="designsGrid">
+      <div class="gallery-item" data-category="eulogy">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Eulogy program design sample 1" />
+        <div class="gallery-overlay"><span>Eulogy Program</span></div>
+      </div>
+      <div class="gallery-item" data-category="wedding">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Wedding invitation design 1" />
+        <div class="gallery-overlay"><span>Wedding Invitation</span></div>
+      </div>
+      <div class="gallery-item" data-category="harambee">
+        <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=600&q=80" alt="Harambee card design 1" />
+        <div class="gallery-overlay"><span>Harambee Card</span></div>
+      </div>
+      <div class="gallery-item" data-category="event">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80" alt="Event flyer design 1" />
+        <div class="gallery-overlay"><span>Event Flyer</span></div>
+      </div>
+      <div class="gallery-item" data-category="eulogy">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80" alt="Eulogy program design sample 2" />
+        <div class="gallery-overlay"><span>Memorial Program</span></div>
+      </div>
+      <div class="gallery-item" data-category="wedding">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Wedding invitation design 2" />
+        <div class="gallery-overlay"><span>Wedding Card</span></div>
+      </div>
+      <div class="gallery-item" data-category="harambee">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Harambee card design 2" />
+        <div class="gallery-overlay"><span>Fundraising Card</span></div>
+      </div>
+      <div class="gallery-item" data-category="event">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Event design 2" />
+        <div class="gallery-overlay"><span>Celebration Card</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ 3D T-SHIRT SHOWCASE ============ -->
   <section id="t-shirts" class="section showcase">
     <div class="showcase-container">
@@ -249,6 +439,35 @@
     </div>
   </section>
 
+  <!-- ============ HOW IT WORKS (NEW) ============ -->
+  <section class="section how-it-works">
+    <div class="section-head">
+      <span class="section-tag">Simple Process</span>
+      <h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+      <p class="section-subtitle">Order in 3 easy steps — most jobs done same day.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Share Your Idea</h3>
+        <p>Send your text, photo or concept via WhatsApp, call us, or visit the shop.</p>
+      </div>
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Design & Confirm</h3>
+        <p>Our designers prepare a proof for your approval before printing begins.</p>
+      </div>
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Pick Up or Delivery</h3>
+        <p>Collect from our shop or we deliver to your location. Fast & reliable.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ GALLERY ============ -->
   <section id="gallery" class="section">
     <div class="section-head">
@@ -264,7 +483,7 @@
       <button class="filter-btn" data-filter="print">Prints</button>
     </div>
 
-    <div class="gallery-grid">
+    <div class="gallery-grid" id="mainGallery">
       <div class="gallery-item" data-category="shirts">
         <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="T-Shirt print 1" />
         <div class="gallery-overlay"><span>T-Shirt Print</span></div>
@@ -292,33 +511,17 @@
     </div>
   </section>
 
-  <!-- ============ WHY CHOOSE US ============ -->
+  <!-- ============ WHY US ============ -->
   <section class="section why-us">
     <div class="section-head">
       <span class="section-tag">Why Skylink</span>
       <h2 class="section-title">Why <span class="gradient-text">Choose Us</span></h2>
     </div>
     <div class="why-grid">
-      <div class="why-card">
-        <i class="fa-solid fa-bolt"></i>
-        <h3>Fast Turnaround</h3>
-        <p>Most jobs completed while you wait — same-day delivery available.</p>
-      </div>
-      <div class="why-card">
-        <i class="fa-solid fa-award"></i>
-        <h3>Quality Guaranteed</h3>
-        <p>Premium materials and attention to detail on every single order.</p>
-      </div>
-      <div class="why-card">
-        <i class="fa-solid fa-tags"></i>
-        <h3>Affordable Prices</h3>
-        <p>Fair, transparent pricing for students, businesses, and everyone.</p>
-      </div>
-      <div class="why-card">
-        <i class="fa-solid fa-headset"></i>
-        <h3>Friendly Support</h3>
-        <p>Our team guides you through every design and print decision.</p>
-      </div>
+      <div class="why-card"><i class="fa-solid fa-bolt"></i><h3>Fast Turnaround</h3><p>Most jobs completed while you wait — same-day delivery available.</p></div>
+      <div class="why-card"><i class="fa-solid fa-award"></i><h3>Quality Guaranteed</h3><p>Premium materials and attention to detail on every single order.</p></div>
+      <div class="why-card"><i class="fa-solid fa-tags"></i><h3>Affordable Prices</h3><p>Fair, transparent pricing for students, businesses, and everyone.</p></div>
+      <div class="why-card"><i class="fa-solid fa-headset"></i><h3>Friendly Support</h3><p>Our team guides you through every design and print decision.</p></div>
     </div>
   </section>
 
@@ -332,12 +535,12 @@
 
     <div class="pricing-grid">
       <div class="price-card">
-        <h3>Printing</h3>
-        <div class="price"><span>KSh</span> 10<small>/page</small></div>
+        <h3>Cards & Invitations</h3>
+        <div class="price"><span>KSh</span> 25<small>/card</small></div>
         <ul>
-          <li><i class="fa-solid fa-check"></i> Black & white prints</li>
-          <li><i class="fa-solid fa-check"></i> Bulk discounts</li>
-          <li><i class="fa-solid fa-check"></i> A4 / A3 sizes</li>
+          <li><i class="fa-solid fa-check"></i> Harambee & wedding cards</li>
+          <li><i class="fa-solid fa-check"></i> Eulogy programs</li>
+          <li><i class="fa-solid fa-check"></i> Free design preview</li>
         </ul>
         <a href="#contact" class="btn btn-outline">Get Started</a>
       </div>
@@ -387,8 +590,7 @@
         <p>
           Skylink Cyber is a modern cyber café and print shop built around one goal —
           to make quality design, printing and digital services accessible to everyone.
-          Whether you need a single copy, a custom t-shirt, or full branding for your
-          business, we deliver with speed and care.
+          From meaningful eulogy programs to custom t-shirts, we deliver with speed and care.
         </p>
         <p>
           Our team combines creative design talent with reliable print equipment, so
@@ -416,50 +618,89 @@
 
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
         <p>"Skylink printed 50 custom t-shirts for our event in a single day. Quality was amazing!"</p>
-        <div class="testimonial-author">
-          <div class="avatar">JM</div>
-          <div>
-            <strong>James M.</strong>
-            <span>Event Organizer</span>
-          </div>
+        <div class="testimonial-author"><div class="avatar">JM</div><div><strong>James M.</strong><span>Event Organizer</span></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"They designed & printed our harambee cards beautifully. Fast, affordable and respectful."</p>
+        <div class="testimonial-author"><div class="avatar">AW</div><div><strong>Amina W.</strong><span>Committee Member</span></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Our wedding invitations were elegant and printed on premium paper. Highly recommend."</p>
+        <div class="testimonial-author"><div class="avatar">DK</div><div><strong>David & Kate</strong><span>Newlyweds</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ (NEW) ============ -->
+  <section id="faq" class="section faq">
+    <div class="section-head">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      <p class="section-subtitle">Everything you need to know before placing an order.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How long does it take to print eulogy programs or harambee cards?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Most card orders are ready within 2–4 hours. For large bulk orders (100+ pieces), we recommend giving us at least 1 day. Rush printing is available on request.</p>
         </div>
       </div>
 
-      <div class="testimonial-card">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p>"Their Photoshop work transformed my passport photos and business logo. Highly recommend."</p>
-        <div class="testimonial-author">
-          <div class="avatar">AW</div>
-          <div>
-            <strong>Amina W.</strong>
-            <span>Small Business Owner</span>
-          </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Can I send my design file for printing?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We accept PDF, AI, PSD, JPG, PNG and Word files. Send them to us via WhatsApp or email — we'll confirm print quality before proceeding.</p>
         </div>
       </div>
 
-      <div class="testimonial-card">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Do you design the cards for me?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. Our team can design from scratch — all we need is the text, photos and theme. We'll send you a proof to review before printing.</p>
         </div>
-        <p>"Fast, affordable and friendly. Skylink has become my go-to cyber café for everything."</p>
-        <div class="testimonial-author">
-          <div class="avatar">DK</div>
-          <div>
-            <strong>David K.</strong>
-            <span>Student</span>
-          </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What payment methods do you accept?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We accept M-Pesa, cash, and bank transfer for bulk orders. A 50% deposit may be required for large jobs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Do you deliver to my location?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — we offer delivery within town (fees may apply). For orders outside town, we use courier services at the client's cost.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is the minimum order for 3D t-shirts?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We print from a single shirt up to bulk orders. Discounts start at 10+ shirts.</p>
         </div>
       </div>
     </div>
@@ -471,12 +712,8 @@
       <h2>Ready to bring your ideas to life?</h2>
       <p>Get in touch today — we respond on WhatsApp within minutes.</p>
       <div class="cta-buttons">
-        <a href="https://wa.me/254XXXXXXXXX" target="_blank" class="btn btn-primary">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
-        </a>
-        <a href="tel:+254XXXXXXXXX" class="btn btn-outline">
-          <i class="fa-solid fa-phone"></i> Call Now
-        </a>
+        <a href="https://wa.me/254XXXXXXXXX" target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="tel:+254XXXXXXXXX" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
       </div>
     </div>
   </section>
@@ -491,75 +728,53 @@
 
     <div class="contact-container">
       <div class="contact-info">
-        <div class="info-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <div>
-            <h4>Visit Us</h4>
-            <p>Your Location, Town, Country</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <i class="fa-solid fa-phone"></i>
-          <div>
-            <h4>Call / WhatsApp</h4>
-            <p>+254 XXX XXX XXX</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <i class="fa-solid fa-envelope"></i>
-          <div>
-            <h4>Email</h4>
-            <p>hello@skylinkcyber.com</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <i class="fa-solid fa-clock"></i>
-          <div>
-            <h4>Working Hours</h4>
-            <p>Mon – Sun: 8:00am – 8:00pm</p>
-          </div>
-        </div>
+        <div class="info-item"><i class="fa-solid fa-location-dot"></i><div><h4>Visit Us</h4><p>Your Location, Town, Country</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-phone"></i><div><h4>Call / WhatsApp</h4><p>+254 XXX XXX XXX</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-envelope"></i><div><h4>Email</h4><p>hello@skylinkcyber.com</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-clock"></i><div><h4>Working Hours</h4><p>Mon – Sun: 8:00am – 8:00pm</p></div></div>
       </div>
 
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone / WhatsApp</label>
-            <input type="tel" id="phone" name="phone" placeholder="+254..." required />
-          </div>
+          <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="Your name" required /></div>
+          <div class="form-group"><label for="phone">Phone / WhatsApp</label><input type="tel" id="phone" name="phone" placeholder="+254..." required /></div>
         </div>
 
-        <div class="form-group">
-          <label for="email">Email (optional)</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" />
-        </div>
+        <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" name="email" placeholder="you@example.com" /></div>
 
         <div class="form-group">
           <label for="service">Service Needed</label>
           <select id="service" name="service" required>
             <option value="">-- Select a service --</option>
-            <option>Photoshop / Photo Editing</option>
-            <option>3D T-Shirt Printing</option>
-            <option>Graphic Design</option>
-            <option>Printing / Photocopy</option>
-            <option>CV / Document Typing</option>
-            <option>Online Services</option>
+            <optgroup label="Print & Design">
+              <option>Eulogy / Memorial Programs</option>
+              <option>Harambee Cards</option>
+              <option>Wedding Cards & Invitations</option>
+              <option>Birthday / Baby Shower Cards</option>
+              <option>Graduation Programs</option>
+              <option>Business Cards</option>
+              <option>Flyers & Posters</option>
+              <option>Receipt / Invoice Books</option>
+            </optgroup>
+            <optgroup label="Custom Print">
+              <option>3D T-Shirt Printing</option>
+              <option>Hoodies / Caps</option>
+              <option>Mugs / Bottles</option>
+            </optgroup>
+            <optgroup label="Design & Cyber">
+              <option>Photoshop / Photo Editing</option>
+              <option>Graphic Design / Logo</option>
+              <option>Printing / Photocopy</option>
+              <option>CV / Document Typing</option>
+              <option>Online Services</option>
+            </optgroup>
             <option>Other</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us what you need..."></textarea>
-        </div>
+        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Tell us what you need..."></textarea></div>
 
-        <button type="submit" class="btn btn-primary btn-block">
-          <i class="fa-solid fa-paper-plane"></i> Send Message
-        </button>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
       </form>
     </div>
   </section>
@@ -584,11 +799,12 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
+          <li><a href="#print-design">Eulogies & Harambee</a></li>
+          <li><a href="#print-design">Wedding Invitations</a></li>
           <li><a href="#services">Photoshop Editing</a></li>
-          <li><a href="#services">3D T-Shirt Printing</a></li>
+          <li><a href="#t-shirts">3D T-Shirt Printing</a></li>
           <li><a href="#services">Graphic Design</a></li>
           <li><a href="#services">Printing & Photocopy</a></li>
-          <li><a href="#services">Online Services</a></li>
         </ul>
       </div>
 
@@ -596,16 +812,22 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#sample-designs">Designs</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Get in Touch</h4>
-        <ul class="footer-contact">
-          <li><i class="fa-solid fa-location-dot"></i> Your Location, Town</li>
+        <h4>Newsletter</h4>
+        <p style="margin-bottom:14px;">Get promos & new design drops in your inbox.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <ul class="footer-contact" style="margin-top:20px;">
           <li><i class="fa-solid fa-phone"></i> +254 XXX XXX XXX</li>
           <li><i class="fa-solid fa-envelope"></i> hello@skylinkcyber.com</li>
         </ul>
@@ -624,11 +846,8 @@
   </a>
 
   <!-- ============ BACK TO TOP ============ -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <!-- ============ SCRIPTS ============ -->
   <script src="script.js"></script>
 </body>
 </html>
