@@ -494,3 +494,120 @@ console.log(
   '%cWebsite by Skylink Print Center · Print. Design. Create.',
   'font-size:12px; color:#64748b;'
 );
+/* ============ TESTIMONIAL 3D CAROUSEL ============ */
+(function initTestimonialCarousel() {
+  const carousel = document.getElementById('testimonialCarousel');
+  const track = document.getElementById('testimonialTrack');
+  if (!carousel || !track) return;
+
+  const slides = track.querySelectorAll('.testimonial-slide');
+  const dotsContainer = document.getElementById('testimonialDots');
+  const prevBtn = document.getElementById('testimonialPrev');
+  const nextBtn = document.getElementById('testimonialNext');
+
+  if (slides.length === 0) return;
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  let autoRotateTimer = null;
+  const ROTATE_INTERVAL = 5000; // 5 seconds
+
+  // Build dots
+  if (dotsContainer) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateSlides();
+        restartAutoRotate();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function updateSlides() {
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+    const prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    const nextIndex = (currentIndex + 1) % totalSlides;
+
+    slides.forEach((slide, i) => {
+      slide.classList.remove('is-center', 'is-left', 'is-right', 'is-hidden');
+
+      if (i === currentIndex) {
+        slide.classList.add('is-center');
+      } else if (i === prevIndex) {
+        slide.classList.add('is-left');
+      } else if (i === nextIndex) {
+        slide.classList.add('is-right');
+      } else {
+        slide.classList.add('is-hidden');
+      }
+    });
+
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlides();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlides();
+  }
+
+  function startAutoRotate() {
+    stopAutoRotate();
+    autoRotateTimer = setInterval(nextSlide, ROTATE_INTERVAL);
+  }
+
+  function stopAutoRotate() {
+    if (autoRotateTimer) {
+      clearInterval(autoRotateTimer);
+      autoRotateTimer = null;
+    }
+  }
+
+  function restartAutoRotate() {
+    stopAutoRotate();
+    startAutoRotate();
+  }
+
+  // Buttons
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      restartAutoRotate();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      restartAutoRotate();
+    });
+  }
+
+  // Pause on hover
+  carousel.addEventListener('mouseenter', stopAutoRotate);
+  carousel.addEventListener('mouseleave', startAutoRotate);
+
+  // Pause when tab is hidden (saves CPU)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoRotate();
+    } else {
+      startAutoRotate();
+    }
+  });
+
+  // Init
+  updateSlides();
+  startAutoRotate();
+})();
