@@ -212,16 +212,13 @@ button {
   visibility: hidden;
 }
 
-/* Loader logo as image (custom logo) */
+/* Loader logo as image (no white background) */
 .loader-logo-img {
   max-width: 280px;
   width: 80%;
   height: auto;
-  background: #ffffff;
-  padding: 18px 28px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   animation: logoPulse 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 40px rgba(14, 165, 233, 0.45));
 }
 
 @keyframes logoPulse {
@@ -250,7 +247,6 @@ button {
   0%   { transform: translateX(-100%); }
   100% { transform: translateX(350%); }
 }
-
 
 /* ============ 6. SCROLL PROGRESS ============ */
 .scroll-progress {
