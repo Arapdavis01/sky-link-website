@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Skylink Cyber — Photoshop, 3D T-shirt printing, eulogies, harambee cards, wedding cards, business cards, banners & all cyber services in one modern shop." />
-  <meta name="keywords" content="Skylink Cyber, cyber cafe, photoshop, 3D t-shirt printing, eulogy printing, harambee cards, wedding cards, business cards, printing Kenya" />
-  <meta name="author" content="Skylink Cyber" />
+  <meta name="description" content="Skylink Print Center — Photoshop, 3D T-shirt printing, eulogies, harambee cards, wedding cards, business cards, banners & all cyber services in one modern shop." />
+  <meta name="keywords" content="Skylink Print Center, cyber cafe, photoshop, 3D t-shirt printing, eulogy printing, harambee cards, wedding cards, business cards, printing Kenya" />
+  <meta name="author" content="Skylink Print Center" />
 
-  <meta property="og:title" content="Skylink Cyber | Print. Design. Create." />
+  <meta property="og:title" content="Skylink Print Center | Print. Design. Create." />
   <meta property="og:description" content="Eulogies, harambee cards, wedding cards, 3D t-shirt printing & all cyber services under one roof." />
   <meta property="og:type" content="website" />
 
-  <title>Skylink Cyber | Print. Design. Create.</title>
+  <title>Skylink Print Center | Print. Design. Create.</title>
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,7 +24,7 @@
 
   <!-- ============ LOADER ============ -->
   <div id="loader" class="loader">
-    <div class="loader-logo">SKYLINK<span>CYBER</span></div>
+    <div class="loader-logo">SKYLINK<span>PRINT CENTER</span></div>
     <div class="loader-bar"><span></span></div>
   </div>
 
@@ -34,14 +34,15 @@
   <div class="topbar">
     <div class="topbar-inner">
       <span><i class="fa-solid fa-clock"></i> Mon–Sun · 8am–8pm</span>
-      <span><i class="fa-solid fa-phone"></i> +254705294470</span>
+      <span><i class="fa-solid fa-phone"></i> +254 705 294 470</span>
       <span><i class="fa-solid fa-location-dot"></i> Mosoriot, Town</span>
       <span class="topbar-social">
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        <!-- Replace '#' with your actual social media links -->
+        <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/254705294470" target="_blank" aria-label="Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" target="_blank" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
       </span>
     </div>
   </div>
@@ -49,9 +50,10 @@
   <!-- ============ NAVBAR ============ -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
+      
+      <!-- CUSTOM LOGO PLACEHOLDER -->
       <a href="#home" class="logo">
-        <i class="fa-solid fa-cloud-bolt"></i>
-        <span>SKYLINK<em>CYBER</em></span>
+        <img src="assets/logo.png" alt="Skylink Print Center Logo" class="logo-img" />
       </a>
 
       <nav class="nav-menu" id="navMenu">
@@ -146,7 +148,7 @@
         </h1>
         <p class="hero-subtitle">
           Eulogies, harambee cards, wedding invitations, 3D T-shirts, logos, Photoshop
-          & every cyber service you need — all under one roof at <strong>Skylink Cyber</strong>.
+          & every cyber service you need — all under one roof at <strong>Skylink Print Center</strong>.
         </p>
         <div class="hero-buttons">
           <a href="#services" class="btn btn-primary">
@@ -178,7 +180,7 @@
         <div class="float-card card-2"><i class="fa-solid fa-shirt"></i><span>3D Printing</span></div>
         <div class="float-card card-3"><i class="fa-solid fa-envelope-open-text"></i><span>Cards</span></div>
         <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Skylink Cyber workspace" />
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Skylink Print Center workspace" />
         </div>
       </div>
     </div>
@@ -188,7 +190,7 @@
     </a>
   </section>
 
-  <!-- ============ TRUST STRIP (NEW) ============ -->
+  <!-- ============ TRUST STRIP ============ -->
   <div class="trust-strip" id="trust-strip">
     <div class="trust-inner">
       <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span>100% Quality Guarantee</span></div>
@@ -282,7 +284,7 @@
     </div>
   </section>
 
-  <!-- ============ PRINT & DESIGN PRODUCTS (NEW) ============ -->
+  <!-- ============ PRINT & DESIGN PRODUCTS (CLICKABLE) ============ -->
   <section id="print-design" class="section print-design">
     <div class="section-head">
       <span class="section-tag">Specialty Printing</span>
@@ -293,60 +295,61 @@
     </div>
 
     <div class="product-grid">
-      <article class="product-card">
+      <!-- Added class 'clickable-card' and data-target for modal JS -->
+      <article class="product-card clickable-card" data-target="modal-eulogy">
         <div class="product-icon"><i class="fa-solid fa-dove"></i></div>
         <h3>Eulogy Programs</h3>
         <p>Dignified memorial booklets with photos, tribute text, order of service & more.</p>
-        <span class="product-meta">From KSh 60 / card</span>
+        <span class="product-meta">From KSh 60 / card <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-harambee">
         <div class="product-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
         <h3>Harambee Cards</h3>
         <p>Fundraising contribution cards with elegant designs & personalisation.</p>
-        <span class="product-meta">From KSh 25 / card</span>
+        <span class="product-meta">From KSh 25 / card <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-wedding">
         <div class="product-icon"><i class="fa-solid fa-ring"></i></div>
         <h3>Wedding Cards & Invites</h3>
         <p>Elegant invitations, RSVPs & order-of-service booklets in premium finishes.</p>
-        <span class="product-meta">From KSh 50 / card</span>
+        <span class="product-meta">From KSh 50 / card <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-birthday">
         <div class="product-icon"><i class="fa-solid fa-cake-candles"></i></div>
         <h3>Birthday & Baby Shower</h3>
         <p>Fun, colourful invitations & thank-you cards tailored to your theme.</p>
-        <span class="product-meta">From KSh 40 / card</span>
+        <span class="product-meta">From KSh 40 / card <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-graduation">
         <div class="product-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <h3>Graduation Programs</h3>
         <p>Graduation booklets, invitations & certificates for schools & families.</p>
-        <span class="product-meta">From KSh 50 / card</span>
+        <span class="product-meta">From KSh 50 / card <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-business">
         <div class="product-icon"><i class="fa-solid fa-briefcase"></i></div>
         <h3>Business Cards</h3>
         <p>Premium matte, gloss or textured business cards — with fast turnaround.</p>
-        <span class="product-meta">From KSh 1,000 / 100 pcs</span>
+        <span class="product-meta">From KSh 1,000 / 100 pcs <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-flyers">
         <div class="product-icon"><i class="fa-solid fa-newspaper"></i></div>
         <h3>Flyers & Posters</h3>
         <p>Eye-catching flyers, posters & banners for events, promos & church programs.</p>
-        <span class="product-meta">From KSh 30 / flyer</span>
+        <span class="product-meta">From KSh 30 / flyer <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
 
-      <article class="product-card">
+      <article class="product-card clickable-card" data-target="modal-receipts">
         <div class="product-icon"><i class="fa-solid fa-receipt"></i></div>
         <h3>Receipt & Invoice Books</h3>
         <p>Custom business receipt books, invoice books & letterheads.</p>
-        <span class="product-meta">From KSh 500 / book</span>
+        <span class="product-meta">From KSh 500 / book <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></span>
       </article>
     </div>
 
@@ -357,7 +360,7 @@
     </div>
   </section>
 
-  <!-- ============ SAMPLE DESIGNS GALLERY (NEW) ============ -->
+  <!-- ============ SAMPLE DESIGNS GALLERY ============ -->
   <section id="sample-designs" class="section sample-designs">
     <div class="section-head">
       <span class="section-tag">Design Samples</span>
@@ -441,7 +444,7 @@
     </div>
   </section>
 
-  <!-- ============ HOW IT WORKS (NEW) ============ -->
+  <!-- ============ HOW IT WORKS ============ -->
   <section class="section how-it-works">
     <div class="section-head">
       <span class="section-tag">Simple Process</span>
@@ -576,7 +579,7 @@
   <section id="about" class="section about">
     <div class="about-container">
       <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Skylink Cyber office" />
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Skylink Print Center office" />
         <div class="about-badge">
           <i class="fa-solid fa-clock"></i>
           <div>
@@ -590,7 +593,7 @@
         <span class="section-tag">About Skylink</span>
         <h2 class="section-title">Your Digital & Print <span class="gradient-text">Partner</span></h2>
         <p>
-          Skylink Cyber is a modern cyber café and print shop built around one goal —
+          Skylink Print Center is a modern cyber café and print shop built around one goal —
           to make quality design, printing and digital services accessible to everyone.
           From meaningful eulogy programs to custom t-shirts, we deliver with speed and care.
         </p>
@@ -637,7 +640,7 @@
     </div>
   </section>
 
-  <!-- ============ FAQ (NEW) ============ -->
+  <!-- ============ FAQ ============ -->
   <section id="faq" class="section faq">
     <div class="section-head">
       <span class="section-tag">FAQ</span>
@@ -714,8 +717,8 @@
       <h2>Ready to bring your ideas to life?</h2>
       <p>Get in touch today — we respond on WhatsApp within minutes.</p>
       <div class="cta-buttons">
-        <a href="https://wa.me/254XXXXXXXXX" target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
-        <a href="tel:+254XXXXXXXXX" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
+        <a href="https://wa.me/254705294470" target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+        <a href="tel:+254705294470" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
       </div>
     </div>
   </section>
@@ -730,9 +733,9 @@
 
     <div class="contact-container">
       <div class="contact-info">
-        <div class="info-item"><i class="fa-solid fa-location-dot"></i><div><h4>Visit Us</h4><p>Your Location, Town, Country</p></div></div>
-        <div class="info-item"><i class="fa-solid fa-phone"></i><div><h4>Call / WhatsApp</h4><p>+254 XXX XXX XXX</p></div></div>
-        <div class="info-item"><i class="fa-solid fa-envelope"></i><div><h4>Email</h4><p>hello@skylinkcyber.com</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-location-dot"></i><div><h4>Visit Us</h4><p>Mosoriot, Town, Kenya</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-phone"></i><div><h4>Call / WhatsApp</h4><p>+254 705 294 470</p></div></div>
+        <div class="info-item"><i class="fa-solid fa-envelope"></i><div><h4>Email</h4><p>hello@skylinkprintcenter.com</p></div></div>
         <div class="info-item"><i class="fa-solid fa-clock"></i><div><h4>Working Hours</h4><p>Mon – Sun: 8:00am – 8:00pm</p></div></div>
       </div>
 
@@ -785,16 +788,17 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-col">
-        <a href="#home" class="logo">
-          <i class="fa-solid fa-cloud-bolt"></i>
-          <span>SKYLINK<em>CYBER</em></span>
+        <!-- CUSTOM LOGO PLACEHOLDER (Footer) -->
+        <a href="#home" class="logo" style="margin-bottom: 20px; display: inline-block;">
+          <img src="assets/logo.png" alt="Skylink Print Center Logo" class="logo-img" style="max-height: 50px;" />
         </a>
         <p>Your one-stop digital & print shop. Design, print, and create with us.</p>
         <div class="socials">
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://wa.me/254XXXXXXXXX" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <!-- Replace '#' with your actual social media links -->
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/254705294470" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -830,25 +834,250 @@
           <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
         </form>
         <ul class="footer-contact" style="margin-top:20px;">
-          <li><i class="fa-solid fa-phone"></i> +254 XXX XXX XXX</li>
-          <li><i class="fa-solid fa-envelope"></i> hello@skylinkcyber.com</li>
+          <li><i class="fa-solid fa-phone"></i> +254 705 294 470</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@skylinkprintcenter.com</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Skylink Cyber. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Skylink Print Center. All rights reserved.</p>
       <p>Designed with <i class="fa-solid fa-heart"></i> for creative minds.</p>
     </div>
   </footer>
 
   <!-- ============ FLOATING WHATSAPP ============ -->
-  <a href="https://wa.me/254XXXXXXXXX" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/254705294470" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <!-- ============ BACK TO TOP ============ -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- ============================================================
+       MODALS FOR PRODUCT CARDS
+       ============================================================ -->
+
+  <!-- Eulogy Modal -->
+  <div class="modal-overlay" id="modal-eulogy">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-dove"></i>
+        <h2>Eulogy & Memorial Programs</h2>
+      </div>
+      <div class="modal-body">
+        <p>Dignified memorial booklets to celebrate the life of your loved one.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per card)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard Program</td><td>A4 folded, colour, 2 pages</td><td>KSh 60</td></tr>
+            <tr><td>Premium Program</td><td>A4 folded, colour, 4 pages, premium paper</td><td>KSh 120</td></tr>
+            <tr><td>Booklet</td><td>Multi-page, stapled, colour</td><td>KSh 150+</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:15px; font-size:0.9rem; color:var(--text-muted);">* Free basic design with orders over 50 cards.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Harambee Modal -->
+  <div class="modal-overlay" id="modal-harambee">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <h2>Harambee Cards</h2>
+      </div>
+      <div class="modal-body">
+        <p>Fundraising contribution cards with elegant designs and personalisation.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per card)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard Card</td><td>Single sided, colour</td><td>KSh 25</td></tr>
+            <tr><td>Double Sided</td><td>Both sides printed, colour</td><td>KSh 40</td></tr>
+            <tr><td>Premium (Laminated)</td><td>Double sided + lamination</td><td>KSh 60</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:15px; font-size:0.9rem; color:var(--text-muted);">* Minimum order: 20 cards.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wedding Modal -->
+  <div class="modal-overlay" id="modal-wedding">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-ring"></i>
+        <h2>Wedding Cards & Invitations</h2>
+      </div>
+      <div class="modal-body">
+        <p>Elegant invitations, RSVPs, and order-of-service booklets in premium finishes.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per card)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard Invite</td><td>A5, colour, matte finish</td><td>KSh 50</td></tr>
+            <tr><td>Premium Invite</td><td>A5, colour, glossy/textured paper</td><td>KSh 80</td></tr>
+            <tr><td>RSVP Card</td><td>Small, double sided</td><td>KSh 30</td></tr>
+            <tr><td>Service Booklet</td><td>A4 folded, colour</td><td>KSh 100</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:15px; font-size:0.9rem; color:var(--text-muted);">* Bulk discounts available for 100+ cards.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Birthday Modal -->
+  <div class="modal-overlay" id="modal-birthday">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-cake-candles"></i>
+        <h2>Birthday & Baby Shower Cards</h2>
+      </div>
+      <div class="modal-body">
+        <p>Fun, colourful invitations and thank-you cards tailored to your theme.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per card)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard Invite</td><td>A6, colour</td><td>KSh 40</td></tr>
+            <tr><td>Premium Invite</td><td>A5, colour, premium paper</td><td>KSh 60</td></tr>
+            <tr><td>Thank You Cards</td><td>A6, colour (bulk)</td><td>KSh 25</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graduation Modal -->
+  <div class="modal-overlay" id="modal-graduation">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h2>Graduation Programs</h2>
+      </div>
+      <div class="modal-body">
+        <p>Graduation booklets, invitations & certificates for schools and families.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per card)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Graduation Invite</td><td>A5, colour</td><td>KSh 50</td></tr>
+            <tr><td>Graduation Booklet</td><td>A4 folded, colour, 4 pages</td><td>KSh 120</td></tr>
+            <tr><td>Certificate Printing</td><td>A4, quality cardstock</td><td>KSh 80</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Cards Modal -->
+  <div class="modal-overlay" id="modal-business">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-briefcase"></i>
+        <h2>Business Cards</h2>
+      </div>
+      <div class="modal-body">
+        <p>Premium matte, gloss, or textured business cards with fast turnaround.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price (per 100 pcs)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard</td><td>Matte or Gloss, single sided</td><td>KSh 1,000</td></tr>
+            <tr><td>Double Sided</td><td>Matte or Gloss, both sides</td><td>KSh 1,500</td></tr>
+            <tr><td>Premium</td><td>Textured paper, spot UV, double sided</td><td>KSh 2,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flyers Modal -->
+  <div class="modal-overlay" id="modal-flyers">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-newspaper"></i>
+        <h2>Flyers & Posters</h2>
+      </div>
+      <div class="modal-body">
+        <p>Eye-catching flyers, posters, and banners for events, promos, and church programs.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A5 Flyer</td><td>Full colour, single sided</td><td>KSh 30 / flyer</td></tr>
+            <tr><td>A4 Flyer</td><td>Full colour, single sided</td><td>KSh 50 / flyer</td></tr>
+            <tr><td>A3 Poster</td><td>Full colour</td><td>KSh 150 / poster</td></tr>
+            <tr><td>Banner</td><td>Per square metre</td><td>KSh 800 / sqm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Receipts Modal -->
+  <div class="modal-overlay" id="modal-receipts">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <i class="fa-solid fa-receipt"></i>
+        <h2>Receipt & Invoice Books</h2>
+      </div>
+      <div class="modal-body">
+        <p>Custom business receipt books, invoice books, and letterheads.</p>
+        <table class="price-table">
+          <thead>
+            <tr><th>Type</th><th>Features</th><th>Price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Receipt Book (50 sets)</td><td>Duplicate, branded</td><td>KSh 500</td></tr>
+            <tr><td>Invoice Book (50 sets)</td><td>Duplicate, branded</td><td>KSh 600</td></tr>
+            <tr><td>Letterheads (100 pcs)</td><td>Full colour</td><td>KSh 1,200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary modal-cta-btn">Order Now</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
