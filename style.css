@@ -248,6 +248,7 @@ button {
   100% { transform: translateX(350%); }
 }
 
+
 /* ============ 6. SCROLL PROGRESS ============ */
 .scroll-progress {
   position: fixed;
@@ -1054,8 +1055,39 @@ button {
 .footer-col ul a:hover { color: var(--accent); padding-left: 4px; }
 .footer-contact li { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); }
 .footer-contact i { color: var(--accent); width: 16px; }
-.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 0; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
+
+/* Footer bottom row — copyright, credit, powered-by */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
 .footer-bottom i { color: var(--accent); }
+
+/* Footer credit — Powered by Qoech Technologies */
+.footer-credit {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.footer-credit a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.25s var(--ease);
+}
+
+.footer-credit a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
 
 .newsletter-form { display: flex; gap: 8px; background: rgba(255,255,255,.08); padding: 6px; border-radius: 12px; }
 .newsletter-form input { flex: 1; padding: 10px 14px; background: transparent; border: none; color: #fff; font-family: inherit; font-size: .88rem; outline: none; }
@@ -1274,6 +1306,14 @@ button {
   .whatsapp-float { width: 54px; height: 54px; font-size: 1.5rem; right: 20px; bottom: 20px; }
   .back-to-top { right: 84px; width: 44px; height: 44px; bottom: 20px; }
   .footer-container { grid-template-columns: 1fr; gap: 36px; }
+
+  /* Stack footer-bottom vertically on mobile for readability */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
   
   .step-arrow { display: none; }
   
@@ -1282,7 +1322,8 @@ button {
   .modal-footer { padding: 16px 20px; }
   .price-table th, .price-table td { padding: 10px 8px; font-size: 0.85rem; }
 
-  .loader-logo-img { max-width: 220px; padding: 14px 20px; }
+  /* Loader logo — no padding (white background removed) */
+  .loader-logo-img { max-width: 220px; }
 }
 
 @media (max-width: 480px) {
@@ -1297,20 +1338,4 @@ button {
   .cta-buttons .btn { width: 100%; }
   .marquee-track { gap: 36px; }
   .modal-content { max-height: 95vh; }
-}
-/* ============ FOOTER CREDIT (Powered by Qoech) ============ */
-.footer-credit {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85rem;
-}
-
-.footer-credit a {
-  color: var(--primary); /* Brand Green */
-  font-weight: 600;
-  transition: color 0.25s var(--ease);
-}
-
-.footer-credit a:hover {
-  color: var(--accent); /* Orange on hover */
-  text-decoration: underline;
 }
