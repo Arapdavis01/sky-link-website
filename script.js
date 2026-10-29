@@ -6,18 +6,19 @@
    3.  Sticky Navbar
    4.  Mobile Menu (Hamburger)
    5.  Active Nav Link on Scroll
-   6.  Smooth Scroll (fallback)
+   6.  Smooth Scroll
    7.  Hero Counter Animation
    8.  Reveal on Scroll
    9.  Gallery Filter
-   10. Contact Form (validation + success)
+   10. Contact Form (→ WhatsApp)
    11. Back to Top Button
    12. Dynamic Year in Footer
    13. FAQ Accordion
    14. Newsletter Form
    15. Mobile Mega Menu
-   16. Product Modals & Auto-Select (NEW)
-   17. Utility: Throttle
+   16. Product Modals
+   17. Testimonial 3D Carousel
+   18. Console Signature
    ============================================================ */
 
 'use strict';
@@ -33,6 +34,13 @@ function throttle(fn, limit = 100) {
     }
   };
 }
+
+/* Business config */
+const BUSINESS = {
+  whatsapp: '254705294470',
+  whatsappDisplay: '0705 294 470',
+  email: 'skylinkprintcenter@gmail.com',
+};
 
 
 /* ============ 1. LOADER ============ */
@@ -186,7 +194,7 @@ window.addEventListener('scroll', throttle(startCounters, 200));
 
 /* ============ 8. REVEAL ON SCROLL ============ */
 const revealTargets = document.querySelectorAll(
-  '.section-head, .service-card, .product-card, .why-card, .price-card, .testimonial-card, .gallery-item, .showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, .cta-content, .faq-item'
+  '.section-head, .service-card, .product-card, .why-card, .price-card, .gallery-item, .showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, .cta-content, .faq-item, .step'
 );
 
 revealTargets.forEach((el) => el.classList.add('reveal'));
@@ -249,7 +257,7 @@ filterButtons.forEach((btn) => {
 });
 
 
-/* ============ 10. CONTACT FORM ============ */
+/* ============ 10. CONTACT FORM → WHATSAPP ============ */
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
@@ -258,9 +266,11 @@ if (contactForm) {
 
     const name = document.getElementById('name')?.value.trim();
     const phone = document.getElementById('phone')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
     const service = document.getElementById('service')?.value;
     const message = document.getElementById('message')?.value.trim();
 
+    // Validation
     if (!name || !phone || !service) {
       showToast('Please fill in your name, phone and select a service.', 'error');
       return;
@@ -272,20 +282,32 @@ if (contactForm) {
       return;
     }
 
-    // Success message + WhatsApp handoff
-    showToast('Thank you! Your message has been received. We\'ll be in touch shortly.', 'success');
+    // Build WhatsApp message with bold formatting
+    const lines = [
+      `*NEW ORDER FROM SKYLINK WEBSITE*`,
+      ``,
+      `*Name:* ${name}`,
+      `*Phone:* ${phone}`,
+    ];
+    if (email) lines.push(`*Email:* ${email}`);
+    lines.push(`*Service:* ${service}`);
+    if (message) lines.push(`*Message:* ${message}`);
+    lines.push(``);
+    lines.push(`_Sent from skylinkprintcenter.com_`);
 
-    const waNumber = '254705294470'; // Updated with real number
-    const waText = encodeURIComponent(
-      `Hi Skylink Print Center!%0A%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`
-    );
+    const waText = encodeURIComponent(lines.join('\n'));
+    const waUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${waText}`;
+
+    // Show success toast
+    showToast('Opening WhatsApp — please confirm your order there 🎉', 'success');
+
+    // Open WhatsApp after a tiny delay for the toast
     setTimeout(() => {
-      if (confirm('Would you like to also send this message on WhatsApp for a faster reply?')) {
-        window.open(`https://wa.me/${waNumber}?text=${waText}`, '_blank');
-      }
-    }, 900);
+      window.open(waUrl, '_blank');
+    }, 500);
 
-    contactForm.reset();
+    // Reset form
+    setTimeout(() => contactForm.reset(), 1000);
   });
 }
 
@@ -400,32 +422,30 @@ if (megaLink && megaParent) {
 }
 
 
-/* ============ 16. PRODUCT MODALS & AUTO-SELECT (NEW) ============ */
+/* ============ 16. PRODUCT MODALS ============ */
 const clickableCards = document.querySelectorAll('.clickable-card');
 const modalOverlays = document.querySelectorAll('.modal-overlay');
 const modalCloseBtns = document.querySelectorAll('.modal-close');
-const modalCtaBtns = document.querySelectorAll('.modal-cta-btn');
-const serviceDropdown = document.getElementById('service');
 
 // Open Modal
 clickableCards.forEach((card) => {
   card.addEventListener('click', () => {
     const targetId = card.dataset.target;
     const targetModal = document.getElementById(targetId);
-    
+
     if (targetModal) {
       targetModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
     }
   });
 });
 
-// Close Modal Functions
+// Close Modal
 function closeModals() {
   modalOverlays.forEach((modal) => {
     modal.classList.remove('active');
   });
-  document.body.style.overflow = ''; // Restore scrolling
+  document.body.style.overflow = '';
 }
 
 // Close on X button
@@ -433,7 +453,7 @@ modalCloseBtns.forEach((btn) => {
   btn.addEventListener('click', closeModals);
 });
 
-// Close on outside click (Overlay)
+// Close on outside click
 modalOverlays.forEach((overlay) => {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
@@ -449,52 +469,8 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Auto-select service in form when clicking "Order Now" in a modal
-modalCtaBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    // 1. Close the modal
-    closeModals();
-    
-    // 2. Find which modal we were in
-    const parentModal = btn.closest('.modal-overlay');
-    let serviceToSelect = '';
 
-    // Map the modal ID to the exact option value in the contact form
-    if (parentModal) {
-      if (parentModal.id === 'modal-eulogy') serviceToSelect = 'Eulogy / Memorial Programs';
-      else if (parentModal.id === 'modal-harambee') serviceToSelect = 'Harambee Cards';
-      else if (parentModal.id === 'modal-wedding') serviceToSelect = 'Wedding Cards & Invitations';
-      else if (parentModal.id === 'modal-birthday') serviceToSelect = 'Birthday / Baby Shower Cards';
-      else if (parentModal.id === 'modal-graduation') serviceToSelect = 'Graduation Programs';
-      else if (parentModal.id === 'modal-business') serviceToSelect = 'Business Cards';
-      else if (parentModal.id === 'modal-flyers') serviceToSelect = 'Flyers & Posters';
-      else if (parentModal.id === 'modal-receipts') serviceToSelect = 'Receipt / Invoice Books';
-    }
-
-    // 3. Auto-select the dropdown in the form
-    if (serviceDropdown && serviceToSelect) {
-      // Find the option that matches the text and select it
-      for (let i = 0; i < serviceDropdown.options.length; i++) {
-        if (serviceDropdown.options[i].text === serviceToSelect) {
-          serviceDropdown.selectedIndex = i;
-          break;
-        }
-      }
-    }
-  });
-});
-
-
-/* ============ 17. CONSOLE SIGNATURE ============ */
-console.log(
-  '%c✨ SKYLINK PRINT CENTER ✨',
-  'font-size:18px; font-weight:bold; color:#16a34a; background:#f8fafc; padding:8px 16px; border-radius:8px;'
-);
-console.log(
-  '%cWebsite by Skylink Print Center · Print. Design. Create.',
-  'font-size:12px; color:#64748b;'
-);
-/* ============ TESTIMONIAL 3D CAROUSEL ============ */
+/* ============ 17. TESTIMONIAL 3D CAROUSEL ============ */
 (function initTestimonialCarousel() {
   const carousel = document.getElementById('testimonialCarousel');
   const track = document.getElementById('testimonialTrack');
@@ -510,7 +486,7 @@ console.log(
   let currentIndex = 0;
   const totalSlides = slides.length;
   let autoRotateTimer = null;
-  const ROTATE_INTERVAL = 5000; // 5 seconds
+  const ROTATE_INTERVAL = 5000;
 
   // Build dots
   if (dotsContainer) {
@@ -546,7 +522,6 @@ console.log(
       }
     });
 
-    // Update dots
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
@@ -579,7 +554,6 @@ console.log(
     startAutoRotate();
   }
 
-  // Buttons
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       nextSlide();
@@ -598,7 +572,7 @@ console.log(
   carousel.addEventListener('mouseenter', stopAutoRotate);
   carousel.addEventListener('mouseleave', startAutoRotate);
 
-  // Pause when tab is hidden (saves CPU)
+  // Pause when tab is hidden
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       stopAutoRotate();
@@ -611,3 +585,14 @@ console.log(
   updateSlides();
   startAutoRotate();
 })();
+
+
+/* ============ 18. CONSOLE SIGNATURE ============ */
+console.log(
+  '%c✨ SKYLINK PRINT CENTER ✨',
+  'font-size:18px; font-weight:bold; color:#1b5e20; background:#f8fafc; padding:8px 16px; border-radius:8px;'
+);
+console.log(
+  '%cWebsite by Skylink Print Center · Print. Design. Create.',
+  'font-size:12px; color:#64748b;'
+);
