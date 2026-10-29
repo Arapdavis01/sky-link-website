@@ -1298,3 +1298,19 @@ button {
   .marquee-track { gap: 36px; }
   .modal-content { max-height: 95vh; }
 }
+/* ============ FOOTER CREDIT (Powered by Qoech) ============ */
+.footer-credit {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.footer-credit a {
+  color: var(--primary); /* Brand Green */
+  font-weight: 600;
+  transition: color 0.25s var(--ease);
+}
+
+.footer-credit a:hover {
+  color: var(--accent); /* Orange on hover */
+  text-decoration: underline;
+}
