@@ -628,31 +628,103 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="section testimonials">
-    <div class="section-head">
-      <span class="section-tag">Testimonials</span>
-      <h2 class="section-title">What <span class="gradient-text">Clients Say</span></h2>
-    </div>
+ <!-- ============ TESTIMONIALS (3D CAROUSEL) ============ -->
+<section class="section testimonials">
+  <div class="section-head">
+    <span class="section-tag">Testimonials</span>
+    <h2 class="section-title">What <span class="gradient-text">Clients Say</span></h2>
+    <p class="section-subtitle">Real words from real customers — hear what they have to say about us.</p>
+  </div>
 
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p>"Skylink printed 50 custom t-shirts for our event in a single day. Quality was amazing!"</p>
-        <div class="testimonial-author"><div class="avatar">JM</div><div><strong>James M.</strong><span>Event Organizer</span></div></div>
+  <div class="testimonial-carousel" id="testimonialCarousel">
+    <div class="testimonial-track" id="testimonialTrack">
+
+      <!-- Testimonial 1 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"Skylink printed 50 custom t-shirts for our event in a single day. Quality was amazing!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">JM</div>
+            <div><strong>James M.</strong><span>Event Organizer</span></div>
+          </div>
+        </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p>"They designed & printed our harambee cards beautifully. Fast, affordable and respectful."</p>
-        <div class="testimonial-author"><div class="avatar">AW</div><div><strong>Amina W.</strong><span>Committee Member</span></div></div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"They designed & printed our harambee cards beautifully. Fast, affordable and respectful."</p>
+          <div class="testimonial-author">
+            <div class="avatar">AW</div>
+            <div><strong>Amina W.</strong><span>Committee Member</span></div>
+          </div>
+        </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p>"Our wedding invitations were elegant and printed on premium paper. Highly recommend."</p>
-        <div class="testimonial-author"><div class="avatar">DK</div><div><strong>David & Kate</strong><span>Newlyweds</span></div></div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"Our wedding invitations were elegant and printed on premium paper. Highly recommend."</p>
+          <div class="testimonial-author">
+            <div class="avatar">DK</div>
+            <div><strong>David & Kate</strong><span>Newlyweds</span></div>
+          </div>
+        </div>
       </div>
+
+      <!-- Testimonial 4 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"My CV was transformed completely. I landed a job within two weeks of applying!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">BN</div>
+            <div><strong>Brian N.</strong><span>Job Seeker</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 5 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"Their Photoshop work on my passport photos was flawless. Very professional team."</p>
+          <div class="testimonial-author">
+            <div class="avatar">CM</div>
+            <div><strong>Caroline M.</strong><span>Client</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 6 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p>"Bought school books & stationery here — great prices and friendly staff. Will return!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">PK</div>
+            <div><strong>Peter K.</strong><span>Parent</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+
+  <!-- Carousel controls -->
+  <div class="testimonial-controls">
+    <button class="carousel-btn carousel-prev" id="testimonialPrev" aria-label="Previous testimonial">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div class="carousel-dots" id="testimonialDots"></div>
+    <button class="carousel-btn carousel-next" id="testimonialNext" aria-label="Next testimonial">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</section>
 
   <!-- ============ FAQ ============ -->
   <section id="faq" class="section faq">
