@@ -1,5 +1,5 @@
 /* ============================================================
-   SKYLINK CYBER — Main JavaScript
+   SKYLINK PRINT CENTER — Main JavaScript
    Sections:
    1.  Loader
    2.  Scroll Progress Bar
@@ -13,13 +13,16 @@
    10. Contact Form (validation + success)
    11. Back to Top Button
    12. Dynamic Year in Footer
-   13. Utility: Throttle
+   13. FAQ Accordion
+   14. Newsletter Form
+   15. Mobile Mega Menu
+   16. Product Modals & Auto-Select (NEW)
+   17. Utility: Throttle
    ============================================================ */
 
 'use strict';
 
 /* ============ UTILITY ============ */
-// Simple throttle helper to limit how often a function fires
 function throttle(fn, limit = 100) {
   let inThrottle;
   return function (...args) {
@@ -36,10 +39,8 @@ function throttle(fn, limit = 100) {
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
   if (!loader) return;
-  // Small delay so the animation is visible even on fast loads
   setTimeout(() => {
     loader.classList.add('hidden');
-    // Remove from DOM after the fade-out completes
     setTimeout(() => loader.remove(), 700);
   }, 800);
 });
@@ -81,7 +82,6 @@ if (hamburger && navMenu) {
     navMenu.classList.toggle('active');
   });
 
-  // Close menu when a link inside is clicked
   navMenu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
@@ -89,7 +89,6 @@ if (hamburger && navMenu) {
     });
   });
 
-  // Close menu on outside click
   document.addEventListener('click', (e) => {
     const clickedInsideMenu = navMenu.contains(e.target);
     const clickedHamburger = hamburger.contains(e.target);
@@ -124,9 +123,7 @@ window.addEventListener('scroll', throttle(highlightNavLink, 150));
 highlightNavLink();
 
 
-/* ============ 6. SMOOTH SCROLL (fallback for older browsers) ============ */
-// CSS `scroll-behavior: smooth` handles modern browsers.
-// This ensures anchor links also offset correctly for the fixed navbar.
+/* ============ 6. SMOOTH SCROLL ============ */
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
@@ -159,7 +156,6 @@ function animateCounter(el) {
 
   function step(now) {
     const progress = Math.min((now - startTime) / duration, 1);
-    // easeOutQuart for a nice slowdown
     const eased = 1 - Math.pow(1 - progress, 4);
     el.textContent = Math.floor(eased * target).toLocaleString() + '+';
 
@@ -184,15 +180,13 @@ function startCounters() {
   }
 }
 
-// Trigger on load (in case hero is already visible) and on scroll
 window.addEventListener('load', startCounters);
 window.addEventListener('scroll', throttle(startCounters, 200));
 
 
 /* ============ 8. REVEAL ON SCROLL ============ */
-// Add `.reveal` to all main content blocks automatically so you don't need to edit HTML.
 const revealTargets = document.querySelectorAll(
-  '.section-head, .service-card, .why-card, .price-card, .testimonial-card, .gallery-item, .showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, .cta-content'
+  '.section-head, .service-card, .product-card, .why-card, .price-card, .testimonial-card, .gallery-item, .showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, .cta-content, .faq-item'
 );
 
 revealTargets.forEach((el) => el.classList.add('reveal'));
@@ -202,7 +196,7 @@ const revealObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target); // only reveal once
+        revealObserver.unobserve(entry.target);
       }
     });
   },
@@ -214,12 +208,12 @@ const revealObserver = new IntersectionObserver(
 
 revealTargets.forEach((el) => revealObserver.observe(el));
 
-// Stagger service cards & gallery items for a smoother cascade
-document.querySelectorAll('.services-grid .service-card').forEach((card, i) => {
-  card.style.transitionDelay = `${i * 0.08}s`;
+// Stagger effects
+document.querySelectorAll('.services-grid .service-card, .product-grid .product-card').forEach((card, i) => {
+  card.style.transitionDelay = `${(i % 4) * 0.08}s`;
 });
 document.querySelectorAll('.gallery-grid .gallery-item').forEach((item, i) => {
-  item.style.transitionDelay = `${i * 0.06}s`;
+  item.style.transitionDelay = `${(i % 3) * 0.06}s`;
 });
 
 
@@ -229,7 +223,6 @@ const galleryItems = document.querySelectorAll('.gallery-item');
 
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    // Toggle active button
     filterButtons.forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -241,7 +234,6 @@ filterButtons.forEach((btn) => {
 
       if (show) {
         item.classList.remove('hide');
-        // restart reveal animation
         item.style.opacity = '0';
         item.style.transform = 'scale(0.95)';
         requestAnimationFrame(() => {
@@ -269,34 +261,23 @@ if (contactForm) {
     const service = document.getElementById('service')?.value;
     const message = document.getElementById('message')?.value.trim();
 
-    // Basic validation
     if (!name || !phone || !service) {
       showToast('Please fill in your name, phone and select a service.', 'error');
       return;
     }
 
-    // Phone validation (allow +, digits, spaces, dashes)
     const phoneRegex = /^\+?[\d\s-]{7,15}$/;
     if (!phoneRegex.test(phone)) {
       showToast('Please enter a valid phone number.', 'error');
       return;
     }
 
-    // ---- Here you would normally send the data to your backend / email service ----
-    // Example with fetch:
-    // fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, phone, service, message })
-    // });
-
-    // For now, show a success message + optional WhatsApp handoff
+    // Success message + WhatsApp handoff
     showToast('Thank you! Your message has been received. We\'ll be in touch shortly.', 'success');
 
-    // Optional: offer to send via WhatsApp too
-    const waNumber = '254XXXXXXXXX'; // <-- replace with real number
+    const waNumber = '254705294470'; // Updated with real number
     const waText = encodeURIComponent(
-      `Hi Skylink Cyber!%0A%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`
+      `Hi Skylink Print Center!%0A%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`
     );
     setTimeout(() => {
       if (confirm('Would you like to also send this message on WhatsApp for a faster reply?')) {
@@ -310,11 +291,8 @@ if (contactForm) {
 
 /**
  * Display a lightweight toast notification.
- * @param {string} msg
- * @param {'success'|'error'} type
  */
 function showToast(msg, type = 'success') {
-  // Remove any existing toast
   const existing = document.querySelector('.toast-notification');
   if (existing) existing.remove();
 
@@ -381,38 +359,19 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
-/* ============ 13. KEYBOARD ACCESSIBILITY ============ */
-// Close mobile menu with Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
-    navMenu.classList.remove('active');
-    if (hamburger) hamburger.classList.remove('active');
-  }
-});
-
-
-/* ============ OPTIONAL: CONSOLE SIGNATURE ============ */
-console.log(
-  '%c✨ SKYLINK CYBER ✨',
-  'font-size:18px; font-weight:bold; color:#2563eb; background:#f8fafc; padding:8px 16px; border-radius:8px;'
-);
-console.log(
-  '%cWebsite by Skylink Cyber · Print. Design. Create.',
-  'font-size:12px; color:#64748b;'
-);
-/* ============ NEW: FAQ ACCORDION ============ */
+/* ============ 13. FAQ ACCORDION ============ */
 document.querySelectorAll('.faq-item').forEach((item) => {
   const question = item.querySelector('.faq-question');
   if (!question) return;
   question.addEventListener('click', () => {
     const wasOpen = item.classList.contains('open');
-    // Close all
     document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   });
 });
 
-/* ============ NEW: NEWSLETTER FORM ============ */
+
+/* ============ 14. NEWSLETTER FORM ============ */
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
   newsletterForm.addEventListener('submit', (e) => {
@@ -422,14 +381,13 @@ if (newsletterForm) {
       showToast('Please enter a valid email.', 'error');
       return;
     }
-    showToast('Subscribed! Welcome to Skylink Cyber. 🎉', 'success');
+    showToast('Subscribed! Welcome to Skylink Print Center. 🎉', 'success');
     newsletterForm.reset();
-    // TODO: POST email to backend
   });
 }
 
-/* ============ NEW: MOBILE MEGA MENU (tap to expand) ============ */
-// On mobile, tap "Services" to expand mega menu (instead of navigating)
+
+/* ============ 15. MOBILE MEGA MENU ============ */
 const megaLink = document.querySelector('.has-mega > a');
 const megaParent = document.querySelector('.has-mega');
 if (megaLink && megaParent) {
@@ -440,3 +398,99 @@ if (megaLink && megaParent) {
     }
   });
 }
+
+
+/* ============ 16. PRODUCT MODALS & AUTO-SELECT (NEW) ============ */
+const clickableCards = document.querySelectorAll('.clickable-card');
+const modalOverlays = document.querySelectorAll('.modal-overlay');
+const modalCloseBtns = document.querySelectorAll('.modal-close');
+const modalCtaBtns = document.querySelectorAll('.modal-cta-btn');
+const serviceDropdown = document.getElementById('service');
+
+// Open Modal
+clickableCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    const targetId = card.dataset.target;
+    const targetModal = document.getElementById(targetId);
+    
+    if (targetModal) {
+      targetModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+  });
+});
+
+// Close Modal Functions
+function closeModals() {
+  modalOverlays.forEach((modal) => {
+    modal.classList.remove('active');
+  });
+  document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close on X button
+modalCloseBtns.forEach((btn) => {
+  btn.addEventListener('click', closeModals);
+});
+
+// Close on outside click (Overlay)
+modalOverlays.forEach((overlay) => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeModals();
+    }
+  });
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.querySelector('.modal-overlay.active')) {
+    closeModals();
+  }
+});
+
+// Auto-select service in form when clicking "Order Now" in a modal
+modalCtaBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    // 1. Close the modal
+    closeModals();
+    
+    // 2. Find which modal we were in
+    const parentModal = btn.closest('.modal-overlay');
+    let serviceToSelect = '';
+
+    // Map the modal ID to the exact option value in the contact form
+    if (parentModal) {
+      if (parentModal.id === 'modal-eulogy') serviceToSelect = 'Eulogy / Memorial Programs';
+      else if (parentModal.id === 'modal-harambee') serviceToSelect = 'Harambee Cards';
+      else if (parentModal.id === 'modal-wedding') serviceToSelect = 'Wedding Cards & Invitations';
+      else if (parentModal.id === 'modal-birthday') serviceToSelect = 'Birthday / Baby Shower Cards';
+      else if (parentModal.id === 'modal-graduation') serviceToSelect = 'Graduation Programs';
+      else if (parentModal.id === 'modal-business') serviceToSelect = 'Business Cards';
+      else if (parentModal.id === 'modal-flyers') serviceToSelect = 'Flyers & Posters';
+      else if (parentModal.id === 'modal-receipts') serviceToSelect = 'Receipt / Invoice Books';
+    }
+
+    // 3. Auto-select the dropdown in the form
+    if (serviceDropdown && serviceToSelect) {
+      // Find the option that matches the text and select it
+      for (let i = 0; i < serviceDropdown.options.length; i++) {
+        if (serviceDropdown.options[i].text === serviceToSelect) {
+          serviceDropdown.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  });
+});
+
+
+/* ============ 17. CONSOLE SIGNATURE ============ */
+console.log(
+  '%c✨ SKYLINK PRINT CENTER ✨',
+  'font-size:18px; font-weight:bold; color:#16a34a; background:#f8fafc; padding:8px 16px; border-radius:8px;'
+);
+console.log(
+  '%cWebsite by Skylink Print Center · Print. Design. Create.',
+  'font-size:12px; color:#64748b;'
+);
