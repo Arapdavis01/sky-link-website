@@ -51,13 +51,13 @@ button {
 /* ============ 2. VARIABLES (STRICT LOGO PALETTE) ============ */
 :root {
   /* Logo Colors */
-  --logo-green: #1b5e20;       /* Deep glossy green from "Sky" */
+  --logo-green: #1b5e20;
   --logo-green-light: #2e7d32; 
-  --logo-blue: #0284c7;        /* Deep medium blue from icon */
-  --logo-cyan: #06b6d4;        /* Light blue from icon */
-  --logo-orange: #ea580c;      /* Deep orange from "link" */
-  --logo-yellow: #f59e0b;      /* Yellow-orange from "link" */
-  --logo-black: #000000;       /* Text color */
+  --logo-blue: #0284c7;
+  --logo-cyan: #06b6d4;
+  --logo-orange: #ea580c;
+  --logo-yellow: #f59e0b;
+  --logo-black: #000000;
 
   /* Assigning Roles */
   --primary: var(--logo-green);
@@ -76,9 +76,7 @@ button {
   --border: #e2e8f0;
 
   /* Gradients */
-  /* Main gradient: Green to Blue */
   --gradient: linear-gradient(135deg, var(--logo-green) 0%, var(--logo-blue) 100%);
-  /* Accent gradient: Orange to Yellow */
   --gradient-accent: linear-gradient(135deg, var(--logo-orange) 0%, var(--logo-yellow) 100%);
 
   /* Shadows */
@@ -166,7 +164,6 @@ button {
   font-size: 1rem;
 }
 
-/* Primary Button uses the Green-Blue Gradient */
 .btn-primary {
   background: var(--gradient);
   color: #fff;
@@ -178,7 +175,6 @@ button {
   box-shadow: 0 14px 32px rgba(27, 94, 32, 0.4);
 }
 
-/* Outline Button uses Black text */
 .btn-outline {
   background: transparent;
   color: var(--text);
@@ -216,24 +212,21 @@ button {
   visibility: hidden;
 }
 
-.loader-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.05em;
+/* Loader logo as image (custom logo) */
+.loader-logo-img {
+  max-width: 280px;
+  width: 80%;
+  height: auto;
+  background: #ffffff;
+  padding: 18px 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: logoPulse 1.8s ease-in-out infinite;
 }
 
-.loader-logo span {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: block;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  text-align: center;
-  margin-top: 5px;
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.04); opacity: 0.92; }
 }
 
 .loader-bar {
@@ -274,7 +267,7 @@ button {
 
 /* ============ 7. TOPBAR & NAVBAR ============ */
 .topbar {
-  background: var(--text); /* Black Topbar */
+  background: var(--text);
   color: rgba(255,255,255,.85);
   font-size: .82rem;
   padding: 8px 5%;
@@ -343,7 +336,7 @@ button {
   position: relative;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text); /* Black text for navbar links */
+  color: var(--text);
   padding: 6px 0;
   transition: color 0.25s var(--ease);
 }
@@ -356,14 +349,14 @@ button {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--gradient-accent); /* Orange underline */
+  background: var(--gradient-accent);
   border-radius: 99px;
   transition: width 0.3s var(--ease);
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--primary); /* Green hover */
+  color: var(--primary);
 }
 
 .nav-link:hover::after,
@@ -376,7 +369,7 @@ button {
   font-size: 0.9rem;
   font-weight: 700;
   color: #fff;
-  background: var(--accent); /* Solid Orange for action button */
+  background: var(--accent);
   border-radius: 999px;
   box-shadow: 0 6px 18px rgba(234, 88, 12, 0.3);
   transition: all 0.3s var(--ease);
@@ -458,11 +451,10 @@ button {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.3; /* Softer opacity */
+  opacity: 0.3;
   animation: floatOrb 12s ease-in-out infinite;
 }
 
-/* Blue and Green Orbs from Logo */
 .orb-1 { width: 400px; height: 400px; background: var(--blue); top: -120px; left: -80px; }
 .orb-2 { width: 350px; height: 350px; background: var(--primary); bottom: -100px; right: -60px; animation-delay: -3s; }
 .orb-3 { width: 250px; height: 250px; background: var(--logo-cyan); top: 40%; left: 45%; animation-delay: -6s; }
@@ -534,7 +526,7 @@ button {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--primary); /* Green Stats */
+  color: var(--primary);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -579,7 +571,6 @@ button {
   animation: floatCard 4s ease-in-out infinite;
 }
 
-/* Icons inside float cards use the accent color */
 .float-card i {
   font-size: 1.3rem;
   color: var(--accent); 
@@ -633,11 +624,11 @@ button {
 }
 .trust-item i {
   font-size: 1.1rem;
-  color: var(--primary); /* Green icons */
+  color: var(--primary);
 }
 
 .marquee {
-  background: var(--text); /* Black Marquee */
+  background: var(--text);
   color: #fff;
   padding: 22px 0;
   overflow: hidden;
@@ -662,7 +653,7 @@ button {
 }
 
 .marquee-track i {
-  color: var(--accent); /* Orange checkmarks */
+  color: var(--accent);
   font-size: 0.85rem;
 }
 
@@ -695,7 +686,7 @@ button {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gradient); /* Green-Blue hover */
+  background: var(--gradient);
   opacity: 0;
   transition: opacity 0.35s var(--ease);
   z-index: 0;
@@ -743,7 +734,7 @@ button {
   gap: 8px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent); /* Orange links */
+  color: var(--accent);
   transition: all 0.3s var(--ease);
 }
 
@@ -773,7 +764,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #fff;
-  background: var(--accent); /* Orange badge */
+  background: var(--accent);
   border-radius: 999px;
   z-index: 2;
 }
@@ -802,14 +793,14 @@ button {
 .product-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--blue); /* Blue border on hover */
+  border-color: var(--blue);
 }
 
 .product-icon {
   width: 56px; height: 56px;
   display: grid; place-items: center;
   border-radius: 14px;
-  background: rgba(2, 132, 199, 0.1); /* Light blue bg */
+  background: rgba(2, 132, 199, 0.1);
   color: var(--blue);
   font-size: 1.4rem;
   margin-bottom: 18px;
@@ -825,7 +816,7 @@ button {
 
 .product-meta {
   font-size: .82rem; font-weight: 700;
-  color: var(--accent); /* Orange price */
+  color: var(--accent);
   padding: 8px 14px;
   background: rgba(234, 88, 12, .08);
   border-radius: 999px;
@@ -865,7 +856,7 @@ button {
 
 .check-list { display: grid; gap: 14px; margin-bottom: 34px; }
 .check-list li { display: flex; align-items: center; gap: 12px; font-size: 0.97rem; font-weight: 500; color: var(--text); }
-.check-list i { color: var(--primary); font-size: 1.1rem; } /* Green checkmarks */
+.check-list i { color: var(--primary); font-size: 1.1rem; }
 
 .showcase-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; gap: 16px; }
 .showcase-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); transition: transform 0.4s var(--ease); }
@@ -946,14 +937,14 @@ button {
 
 
 /* ============ 15. WHY US ============ */
-.why-us { background: var(--text); color: #fff; } /* Black background */
+.why-us { background: var(--text); color: #fff; }
 .why-us .section-title { color: #fff; }
 .why-us .section-tag { color: var(--accent); background: rgba(234, 88, 12, 0.15); }
 
 .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; }
 .why-card { padding: 36px 28px; border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.35s var(--ease); }
 .why-card:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); }
-.why-card i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; display: block; } /* Orange icons */
+.why-card i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; display: block; }
 .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
 .why-card p { font-size: 0.92rem; color: rgba(255, 255, 255, 0.7); }
 
@@ -997,10 +988,10 @@ button {
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; max-width: 1280px; margin: 0 auto; }
 .testimonial-card { background: #fff; padding: 36px 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); transition: all 0.35s var(--ease); }
 .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
-.stars { display: flex; gap: 4px; margin-bottom: 18px; color: var(--accent); font-size: 0.9rem; } /* Orange stars */
+.stars { display: flex; gap: 4px; margin-bottom: 18px; color: var(--accent); font-size: 0.9rem; }
 .testimonial-card > p { font-size: 1rem; color: var(--text); margin-bottom: 26px; line-height: 1.7; font-style: italic; }
 .testimonial-author { display: flex; align-items: center; gap: 14px; }
-.avatar { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; } /* Green avatar */
+.avatar { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
 .testimonial-author strong { display: block; font-size: 0.95rem; color: var(--text); }
 .testimonial-author span { font-size: 0.82rem; color: var(--text-muted); }
 
@@ -1017,7 +1008,6 @@ button {
 .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 22px; }
 .faq-answer p { color: var(--text-muted); font-size: .93rem; line-height: 1.7; }
 
-/* CTA Banner uses the Orange Accent Gradient */
 .cta-banner { padding: 90px 5%; background: var(--gradient-accent); position: relative; overflow: hidden; text-align: center; }
 .cta-banner::before, .cta-banner::after { content: ''; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.15); }
 .cta-banner::before { width: 380px; height: 380px; top: -160px; left: -120px; }
@@ -1037,7 +1027,11 @@ button {
 .contact-info { display: flex; flex-direction: column; gap: 24px; }
 .info-item { display: flex; gap: 18px; align-items: flex-start; padding: 22px; background: var(--bg-soft); border-radius: var(--radius); transition: all 0.3s var(--ease); border: 1px solid var(--border); }
 .info-item:hover { background: #fff; box-shadow: var(--shadow-md); border-color: var(--primary); }
-.info-item i { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--blue); color: #fff; font-size: 1.15rem; flex-shrink: 0; } /* Blue contact icons */
+.info-item i { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--blue); color: #fff; font-size: 1.15rem; flex-shrink: 0; }
+
+/* WhatsApp icon uses its brand green */
+.info-item .fa-whatsapp { background: #25d366 !important; }
+
 .info-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .info-item p { font-size: 0.9rem; color: var(--text-muted); }
 
@@ -1051,17 +1045,17 @@ button {
 
 
 /* ============ 21. FOOTER ============ */
-.footer { background: var(--text); color: rgba(255, 255, 255, 0.75); padding: 80px 5% 0; } /* Black footer */
+.footer { background: var(--text); color: rgba(255, 255, 255, 0.75); padding: 80px 5% 0; }
 .footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 60px; }
 .footer-col .logo { margin-bottom: 20px; display: inline-block; }
 .footer-col p { font-size: 0.92rem; line-height: 1.7; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; }
 .socials { display: flex; gap: 12px; }
 .socials a { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 0.95rem; transition: all 0.3s var(--ease); }
-.socials a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); } /* Orange social hover */
+.socials a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
 .footer-col h4 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 22px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
 .footer-col ul a { font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); transition: all 0.25s var(--ease); }
-.footer-col ul a:hover { color: var(--accent); padding-left: 4px; } /* Orange links */
+.footer-col ul a:hover { color: var(--accent); padding-left: 4px; }
 .footer-contact li { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); }
 .footer-contact i { color: var(--accent); width: 16px; }
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 0; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
@@ -1088,7 +1082,6 @@ button {
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1110,7 +1103,6 @@ button {
   visibility: visible;
 }
 
-/* Modal Content Box */
 .modal-content {
   background: #fff;
   width: 100%;
@@ -1130,7 +1122,6 @@ button {
   transform: translateY(0) scale(1);
 }
 
-/* Modal Header */
 .modal-header {
   background: var(--bg-soft);
   padding: 24px 32px;
@@ -1142,7 +1133,7 @@ button {
 
 .modal-header i {
   font-size: 2rem;
-  color: var(--primary); /* Green icon */
+  color: var(--primary);
 }
 
 .modal-header h2 {
@@ -1151,7 +1142,6 @@ button {
   color: var(--text);
 }
 
-/* Modal Close Button */
 .modal-close {
   position: absolute;
   top: 20px;
@@ -1170,10 +1160,9 @@ button {
 
 .modal-close:hover {
   background: rgba(0,0,0,0.05);
-  color: var(--accent); /* Orange on hover */
+  color: var(--accent);
 }
 
-/* Modal Body */
 .modal-body {
   padding: 32px;
   overflow-y: auto;
@@ -1184,7 +1173,6 @@ button {
   margin-bottom: 20px;
 }
 
-/* Modal Table */
 .price-table {
   width: 100%;
   border-collapse: collapse;
@@ -1213,11 +1201,10 @@ button {
 
 .price-table td:nth-child(3) {
   font-weight: 700;
-  color: var(--accent); /* Orange prices */
+  color: var(--accent);
   white-space: nowrap;
 }
 
-/* Modal Footer */
 .modal-footer {
   padding: 20px 32px;
   border-top: 1px solid var(--border);
@@ -1298,6 +1285,8 @@ button {
   .modal-body { padding: 20px; }
   .modal-footer { padding: 16px 20px; }
   .price-table th, .price-table td { padding: 10px 8px; font-size: 0.85rem; }
+
+  .loader-logo-img { max-width: 220px; padding: 14px 20px; }
 }
 
 @media (max-width: 480px) {
