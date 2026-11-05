@@ -1257,7 +1257,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     bottom: 0;
     width: 100vw; /* FULL WIDTH */
     background: #fff;
-    padding: 80px 24px 40px; /* Room for close button */
+    padding: 80px 24px 40px;
     box-shadow: none;
     transform: translateX(100%) translateZ(0);
     -webkit-transform: translateX(100%) translateZ(0);
@@ -1330,7 +1330,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .nav-cta-mobile i { font-size: 1.2rem; }
 
   /* ============================================
-     MOBILE DROPDOWNS — slide open (iOS-safe)
+     MOBILE DROPDOWNS (Portfolio) & MODALS (Services)
      ============================================ */
   .mega-menu,
   .dropdown-menu {
@@ -1356,12 +1356,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     opacity: 0;
   }
 
-  .has-mega.open .mega-menu {
-    max-height: 1400px;
-    padding: 16px 14px;
-    margin: 6px 0 14px;
-    opacity: 1;
-  }
+  /* Portfolio Dropdown Expand */
   .has-dropdown.open .dropdown-menu {
     max-height: 400px;
     padding: 12px 14px;
@@ -1370,47 +1365,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 
   /* Rotate caret when open */
-  .has-mega.open .nav-caret,
   .has-dropdown.open .nav-caret {
     transform: rotate(180deg);
     background: var(--accent);
     color: #fff;
-  }
-
-  /* SERVICES MEGA MENU — mobile-friendly */
-  .mega-menu {
-    display: block;
-  }
-
-  .mega-col {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
-  .mega-col:first-child { padding-top: 0; }
-  .mega-col:last-child { padding-bottom: 0; border-bottom: none; }
-
-  .mega-col h4 {
-    font-size: 0.72rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.08em;
-  }
-  .mega-col ul {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .mega-col ul a {
-    display: block;
-    font-size: 0.9rem;
-    padding: 10px 10px;
-    border-radius: 8px;
-    line-height: 1.4;
-    white-space: normal; /* Fix text cut-off */
-    transition: background 0.2s, color 0.2s;
-  }
-  .mega-col ul a:active {
-    background: rgba(234, 88, 12, 0.1);
-    color: var(--primary);
   }
 
   /* PORTFOLIO DROPDOWN — mobile */
@@ -1425,6 +1383,103 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     margin-bottom: 6px;
   }
   .dropdown-menu a:last-child { margin-bottom: 0; }
+
+  /* ============================================
+     SERVICES — FULL SCREEN MODAL ON MOBILE
+     ============================================ */
+  .mega-menu {
+    /* Turn it into a fixed full-screen popup */
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 990; /* Above the mobile menu */
+    background: #fff;
+    padding: 80px 24px 40px;
+    margin: 0;
+    border-radius: 0;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+  }
+
+  /* Show modal when 'open' class is added */
+  .has-mega.open .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Add a custom "Close" button for the Services Modal */
+  .has-mega.open .mega-menu::before {
+    content: '\f00d'; /* FontAwesome X icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-soft);
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  /* Add a Title to the Services Modal */
+  .has-mega.open .mega-menu::after {
+    content: 'Our Services';
+    position: absolute;
+    top: 32px;
+    left: 24px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    z-index: 10;
+  }
+
+  /* Mega menu content layout inside the modal */
+  .mega-col {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mega-col:first-child { padding-top: 16px; }
+  .mega-col:last-child { padding-bottom: 0; border-bottom: none; }
+
+  .mega-col h4 {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+  }
+  .mega-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mega-col ul a {
+    display: block;
+    font-size: 1rem;
+    padding: 12px 10px;
+    border-radius: 8px;
+    line-height: 1.4;
+    white-space: normal;
+    background: var(--bg-soft);
+    margin-bottom: 4px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .mega-col ul a:active {
+    background: rgba(234, 88, 12, 0.1);
+    color: var(--primary);
+  }
 
   .has-mega,
   .has-dropdown {
@@ -1574,10 +1629,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .mega-col h4 {
     margin-bottom: 8px;
     font-size: 0.7rem;
-  }
-
-  .has-mega.open .mega-menu {
-    max-height: 1600px;
   }
 }
 
