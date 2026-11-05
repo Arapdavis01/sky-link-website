@@ -194,7 +194,9 @@ window.addEventListener('scroll', throttle(startCounters, 200));
 
 /* ============ 8. REVEAL ON SCROLL ============ */
 const revealTargets = document.querySelectorAll(
-  '.section-head, .service-card, .product-card, .why-card, .price-card, .gallery-item, .showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, .cta-content, .faq-item, .step'
+  '.section-head, .service-card, .product-card, .why-card, .price-card, .gallery-item, ' +
+  '.showcase-text, .showcase-gallery, .about-img, .about-text, .contact-info, .contact-form, ' +
+  '.cta-content, .faq-item, .step, .location-map, .location-info, .location-card'
 );
 
 revealTargets.forEach((el) => el.classList.add('reveal'));
@@ -223,6 +225,9 @@ document.querySelectorAll('.services-grid .service-card, .product-grid .product-
 document.querySelectorAll('.gallery-grid .gallery-item').forEach((item, i) => {
   item.style.transitionDelay = `${(i % 3) * 0.06}s`;
 });
+document.querySelectorAll('.location-info .location-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.08}s`;
+});
 
 
 /* ============ 9. GALLERY FILTER ============ */
@@ -231,12 +236,19 @@ const galleryItems = document.querySelectorAll('.gallery-item');
 
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    filterButtons.forEach((b) => b.classList.remove('active'));
+    // Only affect buttons within the same filter group (same parent)
+    const group = btn.parentElement;
+    group.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
 
     const filter = btn.dataset.filter;
 
-    galleryItems.forEach((item) => {
+    // Determine which gallery grid this filter controls
+    const section = btn.closest('section');
+    const grid = section ? section.querySelector('.gallery-grid') : null;
+    const items = grid ? grid.querySelectorAll('.gallery-item') : galleryItems;
+
+    items.forEach((item) => {
       const cat = item.dataset.category;
       const show = filter === 'all' || cat === filter;
 
@@ -282,7 +294,7 @@ if (contactForm) {
       return;
     }
 
-    // Build WhatsApp message with bold formatting
+    // Build WhatsApp message
     const lines = [
       `*NEW ORDER FROM SKYLINK WEBSITE*`,
       ``,
@@ -298,15 +310,12 @@ if (contactForm) {
     const waText = encodeURIComponent(lines.join('\n'));
     const waUrl = `https://wa.me/${BUSINESS.whatsapp}?text=${waText}`;
 
-    // Show success toast
     showToast('Opening WhatsApp — please confirm your order there 🎉', 'success');
 
-    // Open WhatsApp after a tiny delay for the toast
     setTimeout(() => {
       window.open(waUrl, '_blank');
     }, 500);
 
-    // Reset form
     setTimeout(() => contactForm.reset(), 1000);
   });
 }
@@ -427,7 +436,6 @@ const clickableCards = document.querySelectorAll('.clickable-card');
 const modalOverlays = document.querySelectorAll('.modal-overlay');
 const modalCloseBtns = document.querySelectorAll('.modal-close');
 
-// Open Modal
 clickableCards.forEach((card) => {
   card.addEventListener('click', () => {
     const targetId = card.dataset.target;
@@ -440,7 +448,6 @@ clickableCards.forEach((card) => {
   });
 });
 
-// Close Modal
 function closeModals() {
   modalOverlays.forEach((modal) => {
     modal.classList.remove('active');
@@ -448,12 +455,10 @@ function closeModals() {
   document.body.style.overflow = '';
 }
 
-// Close on X button
 modalCloseBtns.forEach((btn) => {
   btn.addEventListener('click', closeModals);
 });
 
-// Close on outside click
 modalOverlays.forEach((overlay) => {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
@@ -462,7 +467,6 @@ modalOverlays.forEach((overlay) => {
   });
 });
 
-// Close on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && document.querySelector('.modal-overlay.active')) {
     closeModals();
