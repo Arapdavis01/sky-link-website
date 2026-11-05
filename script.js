@@ -15,7 +15,7 @@
    12. Dynamic Year in Footer
    13. FAQ Accordion
    14. Newsletter Form
-   15. Mobile Mega Menu
+   15. Dropdown menus (Mega + Portfolio)
    16. Product Modals
    17. Testimonial 3D Carousel
    18. Console Signature
@@ -90,8 +90,14 @@ if (hamburger && navMenu) {
     navMenu.classList.toggle('active');
   });
 
+  // Close mobile menu when clicking a nav link (but let dropdowns handle their own toggle)
   navMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // If the link is inside an open dropdown toggle, don't close the menu yet
+      const isDropdownToggle = link.parentElement?.classList.contains('has-mega') ||
+                               link.parentElement?.classList.contains('has-dropdown');
+      if (isDropdownToggle && window.innerWidth <= 1024) return;
+
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
     });
@@ -418,17 +424,72 @@ if (newsletterForm) {
 }
 
 
-/* ============ 15. MOBILE MEGA MENU ============ */
-const megaLink = document.querySelector('.has-mega > a');
+/* ============ 15. DROPDOWN MENUS (Mega + Portfolio) ============ */
 const megaParent = document.querySelector('.has-mega');
-if (megaLink && megaParent) {
-  megaLink.addEventListener('click', (e) => {
+const megaLink = megaParent ? megaParent.querySelector(':scope > a') : null;
+
+const dropdownParent = document.querySelector('.has-dropdown');
+const dropdownLink = dropdownParent ? dropdownParent.querySelector(':scope > a') : null;
+
+/**
+ * Close any open dropdowns (used when opening another one or clicking outside).
+ */
+function closeAllDropdowns(except = null) {
+  [megaParent, dropdownParent].forEach((parent) => {
+    if (!parent || parent === except) return;
+    parent.classList.remove('open');
+    const trigger = parent.querySelector(':scope > a');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  });
+}
+
+/**
+ * Toggle a dropdown parent. On desktop, hover handles the visual —
+ * click does nothing (except prevent default). On mobile, tap toggles.
+ */
+function handleDropdownToggle(parent, trigger) {
+  if (!parent || !trigger) return;
+  trigger.addEventListener('click', (e) => {
     if (window.innerWidth <= 1024) {
       e.preventDefault();
-      megaParent.classList.toggle('open');
+      const isOpen = parent.classList.contains('open');
+      closeAllDropdowns(parent);
+      parent.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
     }
   });
 }
+
+handleDropdownToggle(megaParent, megaLink);
+handleDropdownToggle(dropdownParent, dropdownLink);
+
+// Close dropdowns when clicking a link inside them
+document.querySelectorAll('.mega-menu a, .dropdown-menu a').forEach((link) => {
+  link.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+  if (megaParent && dropdownParent) {
+    const insideMega = megaParent.contains(e.target);
+    const insideDropdown = dropdownParent.contains(e.target);
+    if (!insideMega && !insideDropdown) {
+      closeAllDropdowns();
+    }
+  }
+});
+
+// Reset dropdown states when window resizes across the mobile breakpoint
+let lastMobileState = window.innerWidth <= 1024;
+window.addEventListener('resize', throttle(() => {
+  const isMobile = window.innerWidth <= 1024;
+  if (isMobile !== lastMobileState) {
+    closeAllDropdowns();
+    lastMobileState = isMobile;
+  }
+}, 200));
 
 
 /* ============ 16. PRODUCT MODALS ============ */
