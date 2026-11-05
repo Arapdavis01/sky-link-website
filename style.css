@@ -1259,13 +1259,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     background: #fff;
     padding: 88px 24px 40px;
     box-shadow: -20px 0 60px rgba(0, 0, 0, 0.15);
-    transform: translateX(110%);
+    transform: translateX(110%) translateZ(0);
+    -webkit-transform: translateX(110%) translateZ(0);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     z-index: 940;
+    will-change: transform;
   }
-  .nav-menu.active { transform: translateX(0); }
+  .nav-menu.active {
+    transform: translateX(0) translateZ(0);
+    -webkit-transform: translateX(0) translateZ(0);
+  }
 
   /* Dark backdrop behind the drawer */
   .nav-menu::before {
@@ -1339,7 +1346,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .nav-cta-mobile i { font-size: 1.2rem; }
 
   /* ============================================
-     MOBILE DROPDOWNS — slide open (not pop)
+     MOBILE DROPDOWNS — slide open (iOS-safe)
      ============================================ */
   .mega-menu,
   .dropdown-menu {
@@ -1352,27 +1359,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     border: none;
     background: var(--bg-soft);
     border-radius: 12px;
-    display: grid;
-    grid-template-rows: 0fr;
+    display: block;
     overflow: hidden;
-    transition: grid-template-rows 0.35s var(--ease),
-                padding 0.35s var(--ease),
-                margin 0.35s var(--ease);
-    padding: 0 16px;
+    /* Collapsed state — animate max-height, not grid */
+    max-height: 0;
+    padding: 0 14px;
     margin: 0;
     min-width: auto;
-  }
-  .mega-menu > *,
-  .dropdown-menu > * {
-    overflow: hidden;
-    min-height: 0;
+    transition: max-height 0.4s var(--ease),
+                padding 0.35s var(--ease),
+                margin 0.35s var(--ease),
+                opacity 0.3s var(--ease);
+    opacity: 0;
   }
 
-  .has-mega.open .mega-menu,
-  .has-dropdown.open .dropdown-menu {
-    grid-template-rows: 1fr;
-    padding: 16px;
+  /* Expanded state */
+  .has-mega.open .mega-menu {
+    /* Services has 4 columns of content — give it plenty of room */
+    max-height: 1400px;
+    padding: 16px 14px;
     margin: 6px 0 14px;
+    opacity: 1;
+  }
+  .has-dropdown.open .dropdown-menu {
+    max-height: 400px;
+    padding: 12px 14px;
+    margin: 6px 0 14px;
+    opacity: 1;
   }
 
   /* Rotate caret when open */
@@ -1383,21 +1396,64 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     color: #fff;
   }
 
-  /* Mega menu → single column list on mobile */
-  .mega-menu { grid-template-columns: 1fr; gap: 18px; }
-  .mega-col h4 { font-size: .75rem; margin-bottom: 8px; }
-  .mega-col ul { gap: 6px; }
-  .mega-col ul a { font-size: .9rem; padding: 6px 0; display: block; }
+  /* ============================================
+     SERVICES MEGA MENU — mobile-friendly layout
+     (single column, no truncation on iOS)
+     ============================================ */
+  .mega-menu {
+    display: block;
+  }
 
-  /* Portfolio dropdown items */
+  .mega-col {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .mega-col:first-child { padding-top: 0; }
+  .mega-col:last-child { padding-bottom: 0; border-bottom: none; }
+
+  .mega-col h4 {
+    font-size: 0.72rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+  }
+  .mega-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .mega-col ul a {
+    display: block;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-radius: 8px;
+    line-height: 1.4;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mega-col ul a:active {
+    background: rgba(234, 88, 12, 0.1);
+    color: var(--primary);
+  }
+
+  /* ============================================
+     PORTFOLIO DROPDOWN — mobile
+     ============================================ */
   .dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 12px 14px;
-    font-size: .95rem;
+    font-size: 0.95rem;
     background: #fff;
     border-radius: 10px;
     margin-bottom: 6px;
   }
   .dropdown-menu a:last-child { margin-bottom: 0; }
+
+  /* Keep the drawer content visible while dropdowns collapse */
+  .has-mega,
+  .has-dropdown {
+    overflow: visible;
+  }
 }
 
 /* ============================================
@@ -1514,6 +1570,47 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .testimonial-card > p { font-size: 0.9rem; }
 
   .nav-menu { width: 88vw; padding: 80px 18px 32px; }
+}
+
+/* ============================================
+   iPhone 12 / 13 / 14 (390–430px wide) — specific fixes
+   ============================================ */
+@media (max-width: 430px) and (min-width: 360px) {
+  .nav-menu {
+    width: 88vw;
+    padding: 80px 20px 32px;
+  }
+
+  .nav-link {
+    padding: 15px 0;
+    min-height: 52px;
+    font-size: 1rem;
+  }
+
+  /* Bigger, easier-to-tap dropdown links */
+  .mega-col ul a {
+    padding: 10px 12px;
+    font-size: 0.92rem;
+  }
+
+  .dropdown-menu a {
+    padding: 13px 14px;
+    font-size: 0.95rem;
+  }
+
+  /* Tighter spacing so more content fits on one screen */
+  .mega-col {
+    padding: 10px 0;
+  }
+  .mega-col h4 {
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+  }
+
+  /* Ensure the mega menu can grow tall enough */
+  .has-mega.open .mega-menu {
+    max-height: 1600px;
+  }
 }
 
 /* ============================================
