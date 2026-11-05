@@ -133,20 +133,6 @@ if (hamburger && navMenu) {
     });
   });
 
-  /* Click on dark backdrop area (the ::before) closes the drawer.
-     Since ::before is not a real element, we listen on navMenu itself. */
-  navMenu.addEventListener('click', (e) => {
-    // Only if the click landed on the nav-menu element directly (not a child)
-    if (e.target === navMenu) closeMobileMenu();
-  });
-
-  /* Click outside the drawer + hamburger closes it */
-  document.addEventListener('click', (e) => {
-    if (!navMenu.classList.contains('active')) return;
-    if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
-    closeMobileMenu();
-  });
-
   /* ESC key closes drawer */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
@@ -291,14 +277,11 @@ const galleryItems = document.querySelectorAll('.gallery-item');
 
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    // Only affect buttons within the same filter group (same parent)
     const group = btn.parentElement;
     group.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
 
     const filter = btn.dataset.filter;
-
-    // Determine which gallery grid this filter controls
     const section = btn.closest('section');
     const grid = section ? section.querySelector('.gallery-grid') : null;
     const items = grid ? grid.querySelectorAll('.gallery-item') : galleryItems;
@@ -337,7 +320,6 @@ if (contactForm) {
     const service = document.getElementById('service')?.value;
     const message = document.getElementById('message')?.value.trim();
 
-    // Validation
     if (!name || !phone || !service) {
       showToast('Please fill in your name, phone and select a service.', 'error');
       return;
@@ -349,7 +331,6 @@ if (contactForm) {
       return;
     }
 
-    // Build WhatsApp message
     const lines = [
       `*NEW ORDER FROM SKYLINK WEBSITE*`,
       ``,
@@ -375,9 +356,6 @@ if (contactForm) {
   });
 }
 
-/**
- * Display a lightweight toast notification.
- */
 function showToast(msg, type = 'success') {
   const existing = document.querySelector('.toast-notification');
   if (existing) existing.remove();
@@ -496,8 +474,7 @@ function closeAllDropdowns(except = null) {
  * Toggle a dropdown parent.
  *  - Desktop (>1024px): click is ignored (hover handles it) — navigation proceeds normally.
  *  - Mobile (≤1024px): click toggles the panel; navigation is prevented.
- *  - iOS-safe: if the drawer is still sliding in, delay the toggle 100ms so
- *    the height animation doesn't fight the transform animation.
+ *  - iOS-safe: if the drawer is still sliding in, delay the toggle 100ms.
  */
 function handleDropdownToggle(parent, trigger) {
   if (!parent || !trigger) return;
@@ -515,7 +492,6 @@ function handleDropdownToggle(parent, trigger) {
       trigger.setAttribute('aria-expanded', String(!isOpen));
     };
 
-    // iOS Safari: if the drawer is still animating in, wait a beat.
     const navMenuEl = document.getElementById('navMenu');
     const isDrawerAnimating =
       navMenuEl &&
@@ -537,6 +513,11 @@ handleDropdownToggle(dropdownParent, dropdownToggle);
 document.querySelectorAll('.mega-menu a, .dropdown-menu a').forEach((link) => {
   link.addEventListener('click', () => {
     closeAllDropdowns();
+    // If we are in mobile view, tapping a link inside Services modal should
+    // also close the main background menu so the page scrolls properly.
+    if (window.innerWidth <= 1024) {
+      closeMobileMenu();
+    }
   });
 });
 
@@ -544,6 +525,8 @@ document.querySelectorAll('.mega-menu a, .dropdown-menu a').forEach((link) => {
 document.addEventListener('click', (e) => {
   const inMega = megaParent ? megaParent.contains(e.target) : false;
   const inDropdown = dropdownParent ? dropdownParent.contains(e.target) : false;
+  
+  // If we click outside BOTH the mega menu (Services modal) and Portfolio dropdown
   if (!inMega && !inDropdown) {
     closeAllDropdowns();
   }
@@ -708,11 +691,9 @@ document.addEventListener('keydown', (e) => {
     });
   }
 
-  // Pause on hover
   carousel.addEventListener('mouseenter', stopAutoRotate);
   carousel.addEventListener('mouseleave', startAutoRotate);
 
-  // Pause when tab is hidden
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       stopAutoRotate();
@@ -721,7 +702,6 @@ document.addEventListener('keydown', (e) => {
     }
   });
 
-  // Init
   updateSlides();
   startAutoRotate();
 })();
