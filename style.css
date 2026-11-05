@@ -1245,7 +1245,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .location-map iframe { min-height: 360px; }
 
   /* ============================================
-     MOBILE NAVIGATION — full-screen drawer
+     MOBILE NAVIGATION — FULL SCREEN DRAWER
      ============================================ */
   .hamburger { display: flex; }
   .nav-cta { display: none; }
@@ -1255,13 +1255,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(360px, 88vw);
+    width: 100vw; /* FULL WIDTH */
     background: #fff;
-    padding: 88px 24px 40px;
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.15);
-    transform: translateX(110%) translateZ(0);
-    -webkit-transform: translateX(110%) translateZ(0);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 80px 24px 40px; /* Room for close button */
+    box-shadow: none;
+    transform: translateX(100%) translateZ(0);
+    -webkit-transform: translateX(100%) translateZ(0);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -1274,24 +1274,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     -webkit-transform: translateX(0) translateZ(0);
   }
 
-  /* Dark backdrop behind the drawer */
-  .nav-menu::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    right: min(360px, 88vw);
-    background: rgba(0, 0, 0, 0.45);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
-    z-index: -1;
-  }
-  .nav-menu.active::before {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+  /* Remove backdrop, it's full screen now */
+  .nav-menu::before { display: none; }
 
   .nav-menu > ul {
     flex-direction: column;
@@ -1361,7 +1345,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     border-radius: 12px;
     display: block;
     overflow: hidden;
-    /* Collapsed state — animate max-height, not grid */
     max-height: 0;
     padding: 0 14px;
     margin: 0;
@@ -1373,9 +1356,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     opacity: 0;
   }
 
-  /* Expanded state */
   .has-mega.open .mega-menu {
-    /* Services has 4 columns of content — give it plenty of room */
     max-height: 1400px;
     padding: 16px 14px;
     margin: 6px 0 14px;
@@ -1396,10 +1377,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     color: #fff;
   }
 
-  /* ============================================
-     SERVICES MEGA MENU — mobile-friendly layout
-     (single column, no truncation on iOS)
-     ============================================ */
+  /* SERVICES MEGA MENU — mobile-friendly */
   .mega-menu {
     display: block;
   }
@@ -1424,9 +1402,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .mega-col ul a {
     display: block;
     font-size: 0.9rem;
-    padding: 8px 10px;
+    padding: 10px 10px;
     border-radius: 8px;
     line-height: 1.4;
+    white-space: normal; /* Fix text cut-off */
     transition: background 0.2s, color 0.2s;
   }
   .mega-col ul a:active {
@@ -1434,9 +1413,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     color: var(--primary);
   }
 
-  /* ============================================
-     PORTFOLIO DROPDOWN — mobile
-     ============================================ */
+  /* PORTFOLIO DROPDOWN — mobile */
   .dropdown-menu a {
     display: flex;
     align-items: center;
@@ -1449,7 +1426,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
   .dropdown-menu a:last-child { margin-bottom: 0; }
 
-  /* Keep the drawer content visible while dropdowns collapse */
   .has-mega,
   .has-dropdown {
     overflow: visible;
@@ -1460,7 +1436,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    PHONE-SPECIFIC FIXES (≤ 768px)
    ============================================ */
 @media (max-width: 768px) {
-  /* Topbar tighter on phones */
   .topbar { padding: 6px 4%; font-size: .72rem; }
   .topbar-inner {
     gap: 10px;
@@ -1470,7 +1445,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .topbar-hours { display: none; }
   .topbar-social { display: none; }
 
-  /* Navbar sits below topbar */
   .navbar { top: 30px; }
   .navbar.scrolled { top: 0; }
   .nav-container { padding: 0 4%; gap: 12px; }
@@ -1478,7 +1452,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   .section { padding: 70px 5% 60px; }
 
-  /* Hero */
   .hero { padding-top: 120px; min-height: auto; }
   .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
   .hero-subtitle { font-size: 1rem; }
@@ -1488,7 +1461,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .float-card { padding: 10px 14px; font-size: 0.8rem; }
   .float-card i { font-size: 1rem; }
 
-  /* Sections */
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 24px; }
   .about-features { grid-template-columns: 1fr; }
@@ -1496,7 +1468,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .price-card.featured:hover { transform: translateY(-8px); }
   .about-badge { right: 12px; bottom: -20px; padding: 14px 18px; }
 
-  /* Floating buttons */
   .whatsapp-float {
     width: 52px; height: 52px; font-size: 1.4rem;
     right: 16px; bottom: 16px;
@@ -1509,7 +1480,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
   .step-arrow { display: none; }
 
-  /* Modals */
   .modal-header { padding: 20px; }
   .modal-header h2 { font-size: 1.1rem; }
   .modal-header i { font-size: 1.6rem; }
@@ -1520,14 +1490,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   .loader-logo-img { max-width: 200px; }
 
-  /* Testimonials */
   .testimonial-carousel { height: 420px; perspective: 1000px; }
   .testimonial-slide { width: min(300px, 82vw); }
   .testimonial-card { padding: 24px 20px; }
   .testimonial-slide.is-right { transform: translateX(34%) translateZ(-120px) scale(0.8) rotateY(-10deg); opacity: 0.5; }
   .testimonial-slide.is-left  { transform: translateX(-134%) translateZ(-120px) scale(0.8) rotateY(10deg); opacity: 0.5; }
 
-  /* Location */
   .location-actions { flex-direction: column; }
   .location-actions .btn { flex: 1 1 100%; width: 100%; }
 }
@@ -1569,7 +1537,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .testimonial-slide.is-left { opacity: 0.25; }
   .testimonial-card > p { font-size: 0.9rem; }
 
-  .nav-menu { width: 88vw; padding: 80px 18px 32px; }
+  .nav-menu { padding: 80px 18px 32px; }
 }
 
 /* ============================================
@@ -1577,8 +1545,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ============================================ */
 @media (max-width: 430px) and (min-width: 360px) {
   .nav-menu {
-    width: 88vw;
-    padding: 80px 20px 32px;
+    width: 100vw;
+    padding: 80px 16px 32px;
   }
 
   .nav-link {
@@ -1589,8 +1557,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   /* Bigger, easier-to-tap dropdown links */
   .mega-col ul a {
-    padding: 10px 12px;
-    font-size: 0.92rem;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .dropdown-menu a {
@@ -1598,16 +1568,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     font-size: 0.95rem;
   }
 
-  /* Tighter spacing so more content fits on one screen */
   .mega-col {
-    padding: 10px 0;
+    padding: 12px 0;
   }
   .mega-col h4 {
     margin-bottom: 8px;
     font-size: 0.7rem;
   }
 
-  /* Ensure the mega menu can grow tall enough */
   .has-mega.open .mega-menu {
     max-height: 1600px;
   }
