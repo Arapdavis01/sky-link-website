@@ -33,7 +33,7 @@
   <!-- ============ TOP INFO BAR ============ -->
   <div class="topbar">
     <div class="topbar-inner">
-      <span><i class="fa-solid fa-clock"></i> Mon–Sun · 8am–8pm</span>
+      <span class="topbar-hours"><i class="fa-solid fa-clock"></i> Mon–Sun · 8am–8pm</span>
       <a href="tel:+254705294470" style="color: inherit;"><i class="fa-solid fa-phone"></i> 0705 294 470</a>
       <span><i class="fa-solid fa-location-dot"></i> Mosoriot, Town</span>
       <span class="topbar-social">
@@ -59,8 +59,8 @@
 
           <!-- Services mega menu -->
           <li class="has-mega">
-            <a href="#services" class="nav-link">
-              Services <i class="fa-solid fa-chevron-down" style="font-size:.7rem;margin-left:4px;"></i>
+            <a href="#services" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">
+              Services <i class="fa-solid fa-chevron-down nav-caret"></i>
             </a>
             <div class="mega-menu">
               <div class="mega-col">
@@ -111,10 +111,10 @@
             </div>
           </li>
 
-          <!-- Portfolio dropdown (Designs + Gallery combined) -->
+          <!-- Portfolio dropdown -->
           <li class="has-dropdown">
-            <a href="#sample-designs" class="nav-link" aria-haspopup="true" aria-expanded="false">
-              Portfolio <span class="dropdown-caret">▾</span>
+            <a href="#sample-designs" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">
+              Portfolio <i class="fa-solid fa-chevron-down nav-caret"></i>
             </a>
             <div class="dropdown-menu">
               <a href="#sample-designs"><i class="fa-solid fa-pen-ruler"></i> Design Samples</a>
@@ -127,11 +127,18 @@
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+
+        <!-- Mobile-only WhatsApp CTA inside drawer -->
+        <a href="https://wa.me/254705294470?text=Hello%20Skylink%20Print%20Center!%20I'd%20like%20to%20make%20an%20order."
+           target="_blank" class="nav-cta-mobile">
+          <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+        </a>
       </nav>
 
-      <a href="https://wa.me/254705294470?text=Hello%20Skylink%20Print%20Center!%20I'd%20like%20to%20make%20an%20order." target="_blank" class="nav-cta">Order on WhatsApp</a>
+      <a href="https://wa.me/254705294470?text=Hello%20Skylink%20Print%20Center!%20I'd%20like%20to%20make%20an%20order."
+         target="_blank" class="nav-cta">Order on WhatsApp</a>
 
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -679,7 +686,7 @@
           <i class="fa-solid fa-clock"></i>
           <div>
             <strong>Open 7 Days</strong>
-            <span>Mon–Sun · 8am–7pm</span>
+            <span>Mon–Sun · 8am–8pm</span>
           </div>
         </div>
       </div>
