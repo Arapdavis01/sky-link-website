@@ -84,33 +84,82 @@ updateNavbar();
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
+/**
+ * Open the mobile drawer.
+ */
+function openMobileMenu() {
+  if (!hamburger || !navMenu) return;
+  hamburger.classList.add('active');
+  hamburger.setAttribute('aria-expanded', 'true');
+  navMenu.classList.add('active');
+  document.body.classList.add('menu-open');
+}
+
+/**
+ * Close the mobile drawer + reset any open dropdowns.
+ */
+function closeMobileMenu() {
+  if (!hamburger || !navMenu) return;
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  navMenu.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
+  // Also close any open dropdowns
+  document.querySelectorAll('.has-mega.open, .has-dropdown.open').forEach((el) => {
+    el.classList.remove('open');
+    const t = el.querySelector(':scope > .nav-toggle');
+    if (t) t.setAttribute('aria-expanded', 'false');
+  });
+}
+
 if (hamburger && navMenu) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+  /* Toggle on hamburger click */
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (navMenu.classList.contains('active')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   });
 
-  // Close mobile menu when clicking a nav link (but let dropdowns handle their own toggle)
+  /* Close drawer when clicking a normal link (not a dropdown toggle) */
   navMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      // If the link is inside an open dropdown toggle, don't close the menu yet
-      const isDropdownToggle = link.parentElement?.classList.contains('has-mega') ||
-                               link.parentElement?.classList.contains('has-dropdown');
-      if (isDropdownToggle && window.innerWidth <= 1024) return;
-
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
+    link.addEventListener('click', () => {
+      if (link.classList.contains('nav-toggle') && window.innerWidth <= 1024) return;
+      // If inside a dropdown panel, allow default + close
+      if (window.innerWidth <= 1024) closeMobileMenu();
     });
   });
 
+  /* Click on dark backdrop area (the ::before) closes the drawer.
+     Since ::before is not a real element, we listen on navMenu itself. */
+  navMenu.addEventListener('click', (e) => {
+    // Only if the click landed on the nav-menu element directly (not a child)
+    if (e.target === navMenu) closeMobileMenu();
+  });
+
+  /* Click outside the drawer + hamburger closes it */
   document.addEventListener('click', (e) => {
-    const clickedInsideMenu = navMenu.contains(e.target);
-    const clickedHamburger = hamburger.contains(e.target);
-    if (!clickedInsideMenu && !clickedHamburger && navMenu.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
+    if (!navMenu.classList.contains('active')) return;
+    if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
+    closeMobileMenu();
+  });
+
+  /* ESC key closes drawer */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      closeMobileMenu();
     }
   });
+
+  /* Auto-close when resizing back to desktop */
+  window.addEventListener('resize', throttle(() => {
+    if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  }, 200));
 }
 
 
@@ -426,32 +475,34 @@ if (newsletterForm) {
 
 /* ============ 15. DROPDOWN MENUS (Mega + Portfolio) ============ */
 const megaParent = document.querySelector('.has-mega');
-const megaLink = megaParent ? megaParent.querySelector(':scope > a') : null;
+const megaToggle = megaParent ? megaParent.querySelector(':scope > .nav-toggle') : null;
 
 const dropdownParent = document.querySelector('.has-dropdown');
-const dropdownLink = dropdownParent ? dropdownParent.querySelector(':scope > a') : null;
+const dropdownToggle = dropdownParent ? dropdownParent.querySelector(':scope > .nav-toggle') : null;
 
 /**
- * Close any open dropdowns (used when opening another one or clicking outside).
+ * Close every dropdown (optionally except one).
  */
 function closeAllDropdowns(except = null) {
   [megaParent, dropdownParent].forEach((parent) => {
     if (!parent || parent === except) return;
     parent.classList.remove('open');
-    const trigger = parent.querySelector(':scope > a');
+    const trigger = parent.querySelector(':scope > .nav-toggle');
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
   });
 }
 
 /**
- * Toggle a dropdown parent. On desktop, hover handles the visual —
- * click does nothing (except prevent default). On mobile, tap toggles.
+ * Toggle a dropdown parent.
+ *  - Desktop (>1024px): click is ignored (hover handles it) — navigation proceeds normally.
+ *  - Mobile (≤1024px): click toggles the panel; navigation is prevented.
  */
 function handleDropdownToggle(parent, trigger) {
   if (!parent || !trigger) return;
   trigger.addEventListener('click', (e) => {
     if (window.innerWidth <= 1024) {
       e.preventDefault();
+      e.stopPropagation();
       const isOpen = parent.classList.contains('open');
       closeAllDropdowns(parent);
       parent.classList.toggle('open', !isOpen);
@@ -460,28 +511,33 @@ function handleDropdownToggle(parent, trigger) {
   });
 }
 
-handleDropdownToggle(megaParent, megaLink);
-handleDropdownToggle(dropdownParent, dropdownLink);
+handleDropdownToggle(megaParent, megaToggle);
+handleDropdownToggle(dropdownParent, dropdownToggle);
 
-// Close dropdowns when clicking a link inside them
+// Close dropdowns when clicking a link inside them (mobile)
 document.querySelectorAll('.mega-menu a, .dropdown-menu a').forEach((link) => {
   link.addEventListener('click', () => {
     closeAllDropdowns();
   });
 });
 
-// Close dropdowns when clicking outside
+// Close dropdowns when clicking outside (desktop + mobile)
 document.addEventListener('click', (e) => {
-  if (megaParent && dropdownParent) {
-    const insideMega = megaParent.contains(e.target);
-    const insideDropdown = dropdownParent.contains(e.target);
-    if (!insideMega && !insideDropdown) {
-      closeAllDropdowns();
-    }
+  const inMega = megaParent ? megaParent.contains(e.target) : false;
+  const inDropdown = dropdownParent ? dropdownParent.contains(e.target) : false;
+  if (!inMega && !inDropdown) {
+    closeAllDropdowns();
   }
 });
 
-// Reset dropdown states when window resizes across the mobile breakpoint
+// ESC closes any open dropdown
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeAllDropdowns();
+  }
+});
+
+// Reset dropdown states when crossing the mobile breakpoint
 let lastMobileState = window.innerWidth <= 1024;
 window.addEventListener('resize', throttle(() => {
   const isMobile = window.innerWidth <= 1024;
