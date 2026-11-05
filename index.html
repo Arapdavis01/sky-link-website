@@ -57,6 +57,7 @@
         <ul>
           <li><a href="#home" class="nav-link active">Home</a></li>
 
+          <!-- Services mega menu -->
           <li class="has-mega">
             <a href="#services" class="nav-link">
               Services <i class="fa-solid fa-chevron-down" style="font-size:.7rem;margin-left:4px;"></i>
@@ -110,8 +111,17 @@
             </div>
           </li>
 
-          <li><a href="#sample-designs" class="nav-link">Designs</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <!-- Portfolio dropdown (Designs + Gallery combined) -->
+          <li class="has-dropdown">
+            <a href="#sample-designs" class="nav-link" aria-haspopup="true" aria-expanded="false">
+              Portfolio <span class="dropdown-caret">▾</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#sample-designs"><i class="fa-solid fa-pen-ruler"></i> Design Samples</a>
+              <a href="#gallery"><i class="fa-solid fa-images"></i> Our Gallery</a>
+            </div>
+          </li>
+
           <li><a href="#location" class="nav-link">Location</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
