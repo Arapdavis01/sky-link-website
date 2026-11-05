@@ -496,17 +496,36 @@ function closeAllDropdowns(except = null) {
  * Toggle a dropdown parent.
  *  - Desktop (>1024px): click is ignored (hover handles it) — navigation proceeds normally.
  *  - Mobile (≤1024px): click toggles the panel; navigation is prevented.
+ *  - iOS-safe: if the drawer is still sliding in, delay the toggle 100ms so
+ *    the height animation doesn't fight the transform animation.
  */
 function handleDropdownToggle(parent, trigger) {
   if (!parent || !trigger) return;
+
   trigger.addEventListener('click', (e) => {
-    if (window.innerWidth <= 1024) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (window.innerWidth > 1024) return; // desktop → let hover handle it
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const doToggle = () => {
       const isOpen = parent.classList.contains('open');
       closeAllDropdowns(parent);
       parent.classList.toggle('open', !isOpen);
       trigger.setAttribute('aria-expanded', String(!isOpen));
+    };
+
+    // iOS Safari: if the drawer is still animating in, wait a beat.
+    const navMenuEl = document.getElementById('navMenu');
+    const isDrawerAnimating =
+      navMenuEl &&
+      navMenuEl.classList.contains('active') &&
+      navMenuEl.getBoundingClientRect().left < window.innerWidth - navMenuEl.offsetWidth + 4;
+
+    if (isDrawerAnimating) {
+      setTimeout(doToggle, 100);
+    } else {
+      doToggle();
     }
   });
 }
